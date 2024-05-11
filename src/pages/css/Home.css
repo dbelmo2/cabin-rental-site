@@ -1,0 +1,38 @@
+.content {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.main-cabin {
+    object-fit: cover;
+    width: 100vw;
+    opacity: 100%;
+    z-index: -1;
+    position: sticky;
+}
+
+.black-shadow {
+    background-color: rgba(0, 0, 0, .75);
+    height: fit-content;
+    z-index: 1;
+}
+
+.title {
+    justify-self: center;
+    width: fit-content;
+    background-color: red;
+    z-index: 2;
+    position: sticky;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 40vh;
+}
+
+.title-one {
+    width: 100%;
+    background-color: blue;
+}
