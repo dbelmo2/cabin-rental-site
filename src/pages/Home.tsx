@@ -12,22 +12,25 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
         const heroText = document.querySelectorAll('#hero-text');
 
         const heroTextPaths = heroText[0].children;
-        console.log('heroText length', heroTextPaths.length);
         for (let i = 0; i < heroTextPaths.length; i += 1) {
             const path = heroTextPaths[i] as SVGGeometryElement;
             const length = path.getTotalLength();
             path.style.strokeDasharray = `${length}`;
             path.style.strokeDashoffset = `${length}`;
             
-            
+
+
 
             if (coloradoIndexes.includes(i + 1)) {
-                path.style.animation = 'line-anim 3.5s ease forwards 0.10s, fill-middle 0.5s ease forwards 3.1';
-            } if (cabinResortsIndexes.includes(i + 1)) {
-                path.style.animation = 'line-anim 3.5s ease forwards 4.5s, fill-middle 0.5s ease forwards 7.5s';
-            }
-            else {
+                path.style.animation = 'line-anim 3.5s ease forwards, fill-middle 0.5s ease forwards 3s';
+                path.style.stroke = '#FDF8EF';
+
+            } else if (cabinResortsIndexes.includes(i + 1)) {
+                path.style.animation = 'line-anim 3.5s ease forwards 4.5s, fill-other 0.5s ease forwards 7.5s';
+                path.style.stroke = '#D3D3D3';
+            } else {
                 path.style.animation = 'line-anim 3.5s ease forwards, fill-other 0.5s ease forwards 3s';
+                path.style.stroke = '#D3D3D3';
             }
         }
     }
@@ -43,7 +46,13 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
             <div className='black-shadow'>
               <img src={mainCabin} className='main-cabin'/>
               <HeroText  className='title-container'/>
+              <div className='black-blur'>
+              </div>
             </div>
+            <div className='locations-black-intro'>
+                
+            </div>
+
 
         </div>
     )
