@@ -2,37 +2,104 @@
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .main-cabin {
-    object-fit: cover;
-    width: 100vw;
-    opacity: 100%;
-    z-index: -1;
-    position: sticky;
-}
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
 .black-shadow {
-    background-color: rgba(0, 0, 0, .75);
-    height: fit-content;
-    z-index: 1;
-}
-
-.title {
-    justify-self: center;
-    width: fit-content;
-    background-color: red;
-    z-index: 2;
-    position: sticky;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 40vh;
-}
-
-.title-one {
+    position: relative;
     width: 100%;
-    background-color: blue;
-}
+  }
+  
+
+  
+  .title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-51%, -113%);
+    color: white; /* Text color for the title */
+    padding: 10px 20px; /* Adjust padding as needed */
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .black-shadow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .73); /* Black with 75% opacity */
+    z-index: 1;
+  }
+
+
+  #hero-text {
+    opacity: 75%;
+  }
+
+
+  @keyframes line-anim {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fill-middle {
+    from {
+      fill: transparent;
+    }
+    to {
+      fill: #FDF8EF;
+    }
+  }
+  @keyframes fill-other {
+    from {
+      fill: transparent;
+    }
+    to {
+      fill: #D9D9D9;
+    }
+  }
+
+
+
+
+
+  @media screen and (max-width: 1500px) {
+    .main-cabin {
+      width: 100%;
+      min-width: 1500px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  
+
+  @media screen and (max-width: 950px) {
+
+    .title-container {
+      width: 80vw;
+    }
+
+    .two {
+      font-size: 20vw;
+    }
+  }
+
+  
+
+
