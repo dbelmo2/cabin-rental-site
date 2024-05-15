@@ -1,6 +1,7 @@
 import './css/Home.css';
 import mainCabin from '../assets/main-cabin.jpg';
 import HeroText from "../assets/hero-filled.svg?react";
+import LocationVideo from '../assets/colorado-video.mp4';
 import { useEffect } from 'react';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
@@ -50,8 +51,13 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
               <div className='black-blur'>
               </div>
             </div>
-            <div className='locations-black-intro'>
-                
+            <div className='locations-content'>
+                <div className='great-outdoors'>
+                    Witness the great outdoors...
+                </div>
+                <video  className='location-video' src={LocationVideo} autoPlay muted loop/>
+
+
             </div>
 
 
