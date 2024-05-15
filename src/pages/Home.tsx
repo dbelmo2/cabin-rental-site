@@ -25,6 +25,7 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
                 path.style.animation = 'line-anim 3.5s ease forwards, fill-middle 0.5s ease forwards 3s';
                 path.style.stroke = '#FDF8EF';
 
+
             } else if (cabinResortsIndexes.includes(i + 1)) {
                 path.style.animation = 'line-anim 3.5s ease forwards 4.5s, fill-other 0.5s ease forwards 7.5s';
                 path.style.stroke = '#D3D3D3';
