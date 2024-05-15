@@ -5,6 +5,7 @@
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
+    align-content: center;
 
     
 }
@@ -14,7 +15,8 @@
 }
 
 .main-cabin {
-    width: 100%;
+    align-self: center;
+    width: 1920px;
     height: auto;
     display: block;
     animation: hero-image-scale linear;
@@ -166,6 +168,8 @@
     font-size: 60px;
     font-family: 'Italiana', sans-serif;
     font-weight: 100;
+    
+    transform-origin: center;
 
   }
 
@@ -174,7 +178,11 @@
     height: 737px;
     padding: 0px 0px 500px 0px;
     object-fit: cover;
-    width: 100vw;
+    width: 80vw;
+    align-self: center;
+
+
+
 
   }
 
@@ -182,9 +190,9 @@
 
   @media screen and (max-width: 1500px) {
     .main-cabin {
-      width: 100%;
+      width: 1920px;
       min-width: 1500px;
-      height: 100%;
+      height: auto;
       object-fit: cover;
       object-position: center;
       margin-left: 50%;
@@ -197,7 +205,7 @@
   @media screen and (max-width: 950px) {
 
     .title-container {
-      width: 80vw;
+      width: 1920px;
     }
 
     .two {
@@ -207,4 +215,14 @@
 
   
 
-
+  @keyframes seeSaw {
+    0% {
+        transform: rotate(2deg);
+    }
+    50% {
+        transform: rotate(-2deg);
+    }
+    100% {
+        transform: rotate(2deg);
+    }
+}
