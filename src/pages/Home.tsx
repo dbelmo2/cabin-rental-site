@@ -43,19 +43,30 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
     }, [])
 
 
+    // data-aos html tag for css animation on scroll
+
     return (
         <div className='content'>
             <div className='black-shadow'>
               <img src={mainCabin} className='main-cabin'/>
               <HeroText  className='title-container'/>
-              <div className='black-blur'>
-              </div>
             </div>
             <div className='locations-content'>
+                <div className='black-blur'>
+                </div>
                 <div className='great-outdoors'>
                     Witness the great outdoors...
                 </div>
-                <video  className='location-video' src={LocationVideo} autoPlay muted loop/>
+                <div className='location-video-container'>
+                    <video className='location-video' autoPlay loop muted>
+                        <source src={LocationVideo} type='video/mp4' />
+                    </video>
+                </div>
+
+                <div className='locations-photos'>
+                    next section
+                </div>
+
 
 
             </div>

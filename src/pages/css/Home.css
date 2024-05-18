@@ -10,18 +10,18 @@
     
 }
 
+
 .content::-webkit-scrollbar {
   display: none;
 }
 
 .main-cabin {
-    align-self: center;
-    width: 1920px;
+    width: 100%;
     height: auto;
     display: block;
     animation: hero-image-scale linear;
     animation-timeline: view(); /* view(endAtNumPixFromTop, statAtNumPixFromBottom) */
-    animation-range: exit -350px;
+    animation-range: exit -50px;
   }
 
 .black-shadow {
@@ -133,7 +133,7 @@
     height: 192px;
     z-index: 2;
     position: relative;
-    top: -392px;
+    top: -200px;
     
   }
 
@@ -149,13 +149,22 @@
 
   .locations-content {
     position: relative;
-    height: 1000px;
     background-color: black;
     width: 100vw;
     display: flex;
     flex-direction: column;
 
   }
+
+  .black-blur {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    width: 100vw;
+    min-height: 192px;
+    z-index: 2;
+    position: relative;
+    top: -192px;
+  }
+
 
   .great-outdoors {
     display: flex;
@@ -173,24 +182,42 @@
 
   }
 
-  .location-video {
+
+  .location-video-container {
     position: relative;
     height: 737px;
-    padding: 0px 0px 500px 0px;
-    object-fit: cover;
     width: 80vw;
     align-self: center;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform: perspective(1300px) rotateY(6deg) rotateX(5deg);
+    transition: transform 2s ease-in-out;
+    animation: balance-video 3s linear forwards;
+    animation-timeline: view();
+    animation-duration: 3s;
+  }
 
+  .location-video {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 12px;
+  }
 
-
-
+  .locations-photos {
+    margin-bottom: 100px;
+    margin: 400px 0px;
+    position: relative;
+    width: 80vw;
+    height: 1000px;
+    align-self: center;
   }
 
 
 
   @media screen and (max-width: 1500px) {
     .main-cabin {
-      width: 1920px;
+      width: 100%;
       min-width: 1500px;
       height: auto;
       object-fit: cover;
@@ -205,7 +232,7 @@
   @media screen and (max-width: 950px) {
 
     .title-container {
-      width: 1920px;
+      width: 80vw;
     }
 
     .two {
@@ -215,14 +242,15 @@
 
   
 
-  @keyframes seeSaw {
-    0% {
-        transform: rotate(2deg);
-    }
+  @keyframes balance-video {
     50% {
-        transform: rotate(-2deg);
+      transition: all 1.5s;
+      transform: perspective(3000px) rotateY(0deg) rotateX(0deg); /* Rotate the div */
     }
+
     100% {
-        transform: rotate(2deg);
+      transition: all 1.5s;
+      transform: perspective(1300px) rotateY(-6deg) rotateX(-5deg); /* Rotate the div */
     }
-}
+  }
+  
