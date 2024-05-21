@@ -173,7 +173,7 @@
     width: 100vw;
     padding: 277px 0px 137px;
     background-color: black;
-    color: white;
+    color: black;
     font-size: 60px;
     font-family: 'Italiana', sans-serif;
     font-weight: 100;
@@ -182,19 +182,40 @@
 
   }
 
+  .video-text {
+    font-size: 45px;
+    font-family: 'Italiana', sans-serif;
+    font-weight: 100;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 10px;
+    outline: white;
+    outline-style: solid;
+    outline-width: 1px;
+    }
+
+    .video-text-inner {
+      padding: 5px;
+      outline-color: white;
+      outline-width: 1px;
+      outline-style: solid;
+      padding: 50px 50px;
+    }
 
   .location-video-container {
+    text-align: center;
     position: relative;
     height: 737px;
     width: 80vw;
     align-self: center;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    transform: perspective(1300px) rotateY(6deg) rotateX(5deg);
-    transition: transform 2s ease-in-out;
-    animation: balance-video 3s linear forwards;
-    animation-timeline: view();
-    animation-duration: 3s;
+    transform: perspective(1500px) rotateY(7deg) rotateX(7deg);
+    transition: transform 0.75s ease-out;
+
   }
 
   .location-video {
