@@ -1,58 +1,187 @@
-.nav-bar {
-    height: 63px;
+.navbar {
+    width: 100vw;
     position: absolute;
-    z-index: 1000;
+    height: 63px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* font-size: 1.2rem; */
     top: 0;
     left: 0;
-    width: 100vw;
-    flex-direction: row;
-    background-color: rgba(255,255,255, 0.02);
+    z-index: 999;
+    background: rgba(255,255,255, 0.02);
     backdrop-filter: blur(6px);
+  }
+  
+  .navbar-container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-.logo {
-    width: 60px;
-    height: 100%;
-}
-.links {
-    
-    position: relative;
-    height: 100%;
-    margin: 0px;
-    list-style-type: none;
-    width: fit-content;
-    font-family: 'Quattrocento Sans', sans-serif;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    z-index: 1000;
-
-
-}
-
-.nav-link {
-    z-index: 1000;
-    position: relative;
-    color: white;
+    height: 63px;
+  }
+  
+  .container {
+    z-index: 1;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  
+  .navbar-logo {
+    color: #fff;
+    justify-self: start;
     cursor: pointer;
-    padding: 0px 30px;
-    font-size: 14px;
+    text-decoration: none;
     display: flex;
     align-items: center;
-    height: 69px;
-    font-weight: 100;
-    transition: all 1s ease-in;
-}
+  }
+  
+  .navbar-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+    justify-content: end;
+    font-family: 'Quattrocento Sans', sans-serif;
 
-.nav-link:hover {
-    border-bottom-width: 2px;
-    border-bottom-color: #FDF8EF;
-    border-bottom-style: solid;
-    transition: all 1s ease-in;
-}
+  }
+  
+  .nav-item {
+    height: 63px;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .nav-item:hover {
+    border-bottom: 2px solid white;
+  }
+  
+  .nav-divs {
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0px 30px;
+    height: 100%;
+    font-family: 'Quattrocento Sans', sans-serif;
+  }
 
+
+  
+  .fa-bars {
+    color: #fff;
+  }
+  
+  .menu-icon {
+    display: none;
+    color: white
+  }
+  
+  @media screen and (max-width: 960px) {
+    .nav-divs {
+      background-color: rgba(0,0,0, 0.30);
+      font-size: 14px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      padding: 0px 0px;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+
+    }
+    .nav-divs:hover {
+      background-color: rgba(0,0,0, 0.5);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .NavbarItems {
+      position: relative;
+    }
+  
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 90vh;
+      position: absolute;
+      top: 47px;
+      left: -100%;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+
+
+    .nav-menu.active {
+      padding-inline-start: 0px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      left: 0;
+      opacity: 1;
+      transition: all 0.6s ease;
+      z-index: 1;
+      background: rgba(0,0,0, 0.70);
+      backdrop-filter: blur(6px);
+    }
+  
+    .nav-links {
+      text-align: center;
+      padding: 2rem;
+      width: 100%;
+      display: table;
+    }
+  
+    .nav-links:hover {
+      color: #b4cd31;
+      transform: scale(1.2);
+      transition: all 0.3s ease;
+    }
+  
+    .nav-item:hover {
+      border: none;
+    }
+  
+    .nav-item {
+      width: 100vw;
+      align-self: center;
+    }
+  
+    .navbar-logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(25%, 50%);
+    }
+  
+    .menu-icon {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-100%, 60%);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  
+    .fa-times {
+      color: #fff;
+      font-size: 2rem;
+    }
+  
+    .nav-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 120px;
+    }
+  }

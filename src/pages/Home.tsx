@@ -52,10 +52,10 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
         const maxXTilt = 7;
         const normalPerspective = 3000;
         const tiltedPerspective = 1500;
-        const startStraighten = 824;
-        const endStraighten = 1624;
-        const startTilt = 1700;
-        const endTilt = 2340;
+        const startStraighten = 724;
+        const endStraighten = 1524;
+        const startTilt = 1600;
+        const endTilt = 2240;
 
         const yStraightenMultiplier = maxYTilt / (endStraighten - startStraighten);
         const xStraightenMultiplier = maxXTilt / (endStraighten - startStraighten);
@@ -151,7 +151,6 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
                 <div className='black-blur'>
                 </div>
                 <div className='great-outdoors'>
-                    Witness the great outdoors...
                 </div>
                 <div className='location-video-container'>
                     <video className='location-video' autoPlay loop muted>
