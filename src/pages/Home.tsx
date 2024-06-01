@@ -3,7 +3,6 @@ import mainCabin from '../assets/main-cabin.jpg';
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video.mp4';
 import { useEffect } from 'react';
-import { Typography } from '@mui/material';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
 const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
