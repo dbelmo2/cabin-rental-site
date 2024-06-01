@@ -7,16 +7,15 @@ import { FaTimes, FaBars } from 'react-icons/fa';
 export default function NavBar() {
 
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(false);
     
     const handleMenuClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
   
     const showButton = () => {
       if(window.innerWidth <=960) {
-        setButton(false);         
+        //setButton(false);         
       } else {
-        setButton(true);
+       // setButton(true);
       }
 
     }
