@@ -1,6 +1,5 @@
 import './css/NavBar.css';
 import Logo from '../assets/logo.svg?react';
-import { Button, IconButton, div } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { FaTimes, FaBars } from 'react-icons/fa';
 
@@ -15,15 +14,31 @@ export default function NavBar() {
   
     const showButton = () => {
       if(window.innerWidth <=960) {
-        setButton(false);
+        setButton(false);         
       } else {
         setButton(true);
       }
+
     }
   
     useEffect(() => {
       showButton();
     }, []);
+
+    useEffect(() => {
+      if (click) {
+
+        if (window.innerWidth <= 960) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'visible';
+        }
+
+      } else {
+        console.log('setting overflow to visible');
+        document.body.style.overflow = 'visible';
+      }
+    }, [click])
   
     window.addEventListener('resize', showButton);
     return (
@@ -31,12 +46,9 @@ export default function NavBar() {
         <div className="navbar">
         <div className="navbar-container container">
             <Logo className='navbar-logo'/>
-      
-
             <div className="menu-icon" onClick={handleMenuClick}>
             {click ? <FaTimes /> : <FaBars />}
             </div>
-
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className='nav-item'>
                     <div className='nav-divs' onClick={closeMobileMenu}>
@@ -60,15 +72,7 @@ export default function NavBar() {
                     About Us
                     </div>
                 </li>
-
-
-
-
             </ul>
-
-
-            
-
         </div>
         </div>
         </>

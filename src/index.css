@@ -3,3 +3,7 @@ body {
   margin: 0px;
   background-color: black;
  }
+
+video::-webkit-media-controls {
+  display: none !important;
+}

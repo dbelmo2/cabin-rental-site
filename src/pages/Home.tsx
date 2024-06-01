@@ -3,6 +3,7 @@ import mainCabin from '../assets/main-cabin.jpg';
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video.mp4';
 import { useEffect } from 'react';
+import { Typography } from '@mui/material';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
 const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
@@ -48,10 +49,10 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
         const container = document.querySelector('.content');
         const videoContainer = document.querySelector('.location-video-container') as HTMLElement;
         
-        const maxYTilt = 7;
-        const maxXTilt = 7;
+        const maxYTilt = 15;
+        const maxXTilt = 10;
         const normalPerspective = 3000;
-        const tiltedPerspective = 1500;
+        const tiltedPerspective = 1000;
         const startStraighten = 724;
         const endStraighten = 1524;
         const startTilt = 1600;
@@ -153,7 +154,7 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
                 <div className='great-outdoors'>
                 </div>
                 <div className='location-video-container'>
-                    <video className='location-video' autoPlay loop muted>
+                    <video className='location-video' autoPlay={true} loop muted={true} playsInline>
                         <source src={LocationVideo} type='video/mp4' />
                     </video>
                     <div className='video-text'>
@@ -165,7 +166,14 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
                 </div>
 
                 <div className='locations-photos'>
-                    next section
+                    <div className='locations-photos-header'>
+                        Like never before
+                    </div>
+                    <div className='locations-photos-slider'>
+                    </div>
+                    <div className='locations-photos-description'>
+
+                    </div>
                 </div>
 
 
