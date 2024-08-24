@@ -205,14 +205,13 @@
   .location-video-container {
     text-align: center;
     position: relative;
-    height: 737px;
-    width: 80vw;
+    height: 800px; /* old value 737px */
+    width: 100vw; /* old value 90vw */
     align-self: center;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     transform: perspective(1500px) rotateY(7deg) rotateX(7deg);
     transition: transform 0.75s ease-out;
-
   }
 
   .location-video {
@@ -230,9 +229,51 @@
     height: 1000px;
     background-color: black;
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
+  .locations-photos-header {
+    color: white;
+    font-family: 'Italiana', sans-serif;
+    font-size: 60px;
+    padding: 20px 0px;
+  }
+
+  .locations-photos-description {
+    color: white;
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 33px;
+    text-align: center;
+    width: 1260px;
+    padding: 20px 0px;
+    font-weight: 100;
+  }
+  
+  .locations-photos-slider {
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+
+  }
+
+  .locations-photos-slider::before {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+  }
+
+  .expanding-line {
+    width: 0;
+    height: 2px;
+    background-color: white;
+    animation: expand 5s forwards;
+    animation-timeline: view();
+    animation-range-end: entry 210px;
+    animation-range-start: entry 100px;
+    margin: 25px 0px;
+  }
 
 
   @media screen and (max-width: 1500px) {
@@ -290,3 +331,12 @@
     }
   }
   
+
+  @keyframes expand {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 1068px;
+    }
+  }

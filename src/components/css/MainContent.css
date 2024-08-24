@@ -1,0 +1,105 @@
+.cabin-section::before {
+    background-color: red;
+    height: 500px;
+    width: 100vw;
+}
+
+.main-content {
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    background: linear-gradient(to bottom, black, #191616);
+    color: #FFFFFF;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cabin-section {
+    display: flex;
+    flex-direction: row;
+    padding: 0px 20px 300px 20px;
+}
+
+
+.cabin-text {
+    width: 100%;
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    padding: 36px 100px;
+}
+
+.title {
+    font-size: 33px;
+    font-weight: 200;
+}
+
+.description {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 200;
+}
+
+
+.inverse {
+    flex-direction: row-reverse;
+}
+
+.responsive-img {
+    width: 100%;  /* Scale the width of the image to the width of the container (or window) */
+    height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+    display: block; /* Ensures there's no extra space below the image */
+}
+
+
+@media screen and (max-width: 1500px) {
+    .responsive-img {
+        width: 50%;  /* Scale the width of the image to the width of the container (or window) */
+        height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+        display: block; /* Ensures there's no extra space below the image */
+    }
+
+    .title {
+        font-size: 25px;
+    }
+    
+    .description {
+        font-size: 16px;
+
+    }
+    
+}
+
+@media screen and (max-width: 1200px) {
+    .responsive-img {
+        width: 45%;  /* Scale the width of the image to the width of the container (or window) */
+        height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+        display: block; /* Ensures there's no extra space below the image */
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .cabin-section {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 0px 20px 300px 20px;
+        align-items: center;
+    }
+
+    .cabin-text {
+        width: 90%;
+        color: #FFF;
+        font-family: 'Inter', sans-serif;
+        padding: 0px 0px 0px 0px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .responsive-img {
+        width: 95%;  /* Scale the width of the image to the width of the container (or window) */
+        height: auto; /* Automatically adjust the height to maintain the aspect ratio */
+        display: block; /* Ensures there's no extra space below the image */
+    }
+
+}
+
+

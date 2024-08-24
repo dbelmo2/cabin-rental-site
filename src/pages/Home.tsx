@@ -1,12 +1,18 @@
 import './css/Home.css';
 import mainCabin from '../assets/main-cabin.jpg';
+import locationsOne from '../assets/locations-one.png';
+import locationsTwo from '../assets/locations-two.png';
+import locationsThree from '../assets/locations-three.png';
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video.mp4';
 import { useEffect } from 'react';
+import MainContent from '../components/MainContent';
+import '../components/css/Footer.css';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
 const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
-export default function Home() {document.querySelector("#hero-text > path:nth-child(19)")
+export default function Home() {
+    document.querySelector("#hero-text > path:nth-child(19)")
 
 
     const setHeroTextLengths = () => {
@@ -147,6 +153,7 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
               <img src={mainCabin} className='main-cabin'/>
               <HeroText  className='title-container'/>
             </div>
+
             <div className='locations-content'>
                 <div className='black-blur'>
                 </div>
@@ -163,23 +170,26 @@ export default function Home() {document.querySelector("#hero-text > path:nth-ch
                       </div>
                     </div>
                 </div>
+            </div>
 
-                <div className='locations-photos'>
+            <div className='locations-photos'>
                     <div className='locations-photos-header'>
                         Like never before
                     </div>
                     <div className='locations-photos-slider'>
+                        <img src={locationsOne} />
+                        <img src={locationsTwo} />
+                        <img src={locationsThree} />
                     </div>
+                    <div className='expanding-line'></div>
                     <div className='locations-photos-description'>
-
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
                     </div>
-                </div>
-
-
-
             </div>
 
-
+            <MainContent>
+                
+            </MainContent>
         </div>
     )
 }
