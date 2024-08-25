@@ -1,8 +1,8 @@
 import './css/Home.css';
 import mainCabin from '../assets/main-cabin.jpg';
-import locationsOne from '../assets/locations-one.png';
-import locationsTwo from '../assets/locations-two.png';
-import locationsThree from '../assets/locations-three.png';
+import tallCabinFive from '../assets/slider/tall-cabin-five.jpg';
+import tallCabinTwo from '../assets/slider/tall-cabin-two.jpg';
+import tallCabinThree from '../assets/slider/tall-cabin-three.jpg';
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video.mp4';
 import { useEffect } from 'react';
@@ -173,18 +173,25 @@ export default function Home() {
             </div>
 
             <div className='locations-photos'>
-                    <div className='locations-photos-header'>
-                        Like never before
-                    </div>
+
                     <div className='locations-photos-slider'>
-                        <img src={locationsOne} />
-                        <img src={locationsTwo} />
-                        <img src={locationsThree} />
+                        <div className='locations-photo-container'>
+                            <img src={tallCabinFive} className='locations-photo'/>
+                        </div>
+                        <div className='locations-photo-container centered-photo'>
+                        <div className='locations-photos-header'>
+                        <div className='locations-photos-header-inner'>
+                            Like never before
+                        </div>    
+                    </div>
+                            <img src={tallCabinTwo} className='locations-photo'/>
+                        </div>
+                        <div className='locations-photo-container'>
+                            <img src={tallCabinThree} className='locations-photo'/>
+                        </div>
                     </div>
                     <div className='expanding-line'></div>
-                    <div className='locations-photos-description'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    </div>
+
             </div>
 
             <MainContent>
