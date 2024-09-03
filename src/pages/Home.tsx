@@ -190,7 +190,7 @@ export default function Home() {
                             <img src={tallCabinThree} className='locations-photo'/>
                         </div>
                     </div>
-                    <div className='expanding-line'></div>
+                    {/*<div className='expanding-line'></div>*/}
 
             </div>
 
