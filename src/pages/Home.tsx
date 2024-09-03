@@ -1,8 +1,8 @@
 import './css/Home.css';
 import mainCabin from '../assets/main-cabin.jpg';
-import tallCabinFive from '../assets/slider/tall-cabin-five.jpg';
-import tallCabinTwo from '../assets/slider/tall-cabin-two.jpg';
-import tallCabinThree from '../assets/slider/tall-cabin-three.jpg';
+import tallCabinFive from '../assets/slider/tall-cabin-five-opt.jpg';
+import tallCabinTwo from '../assets/slider/tall-cabin-two-opt.jpg';
+import tallCabinThree from '../assets/slider/tall-cabin-three-opt.jpg';
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video.mp4';
 import { useEffect } from 'react';
@@ -179,11 +179,11 @@ export default function Home() {
                             <img src={tallCabinFive} className='locations-photo'/>
                         </div>
                         <div className='locations-photo-container centered-photo'>
-                        <div className='locations-photos-header'>
-                        <div className='locations-photos-header-inner'>
-                            Like never before
-                        </div>    
-                    </div>
+                            <div className='locations-photos-header'>
+                                <div className='locations-photos-header-inner'>
+                                    Like never before
+                                </div>    
+                            </div>
                             <img src={tallCabinTwo} className='locations-photo'/>
                         </div>
                         <div className='locations-photo-container'>

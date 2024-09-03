@@ -166,7 +166,7 @@
     justify-content: center;
     position: relative;
     width: 100vw;
-    padding: 250px 0px 137px;
+    padding: 200px 0px 137px;
     background-color: black;
     color: black;
     font-size: 60px;
@@ -203,8 +203,8 @@
   .location-video-container {
     text-align: center;
     position: relative;
-    height: 800px; /* old value 737px */
-    width: 100vw; /* old value 90vw */
+    height: 737px; /* old value 737px */
+    width: 90vw; /* old value 90vw */
     align-self: center;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
@@ -216,7 +216,7 @@
     height: 100%;
     object-fit: cover;
     width: 100%;
-    border-radius: 12px;
+    border-radius: 1px;
     
   }
 
