@@ -2,15 +2,49 @@ import cabinOne from '../assets/main-content/cabin-one.png';
 import cabinTwo from '../assets/main-content/cabin-two.png';
 import cabinThree from '../assets/main-content/cabin-three.png';
 import './css/MainContent.css';
+import { useEffect } from 'react';
 
 export default function MainContent() {
+
+
+    useEffect(() => {
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+
+                    if (entry.target.classList.contains('responsive-img')) {
+                        entry.target.classList.add('scroll-effect')
+                    } else if (entry.target.classList.contains('cabin-text')) {
+                        entry.target.classList.add('show');
+                    }
+                } else {
+                    if (entry.target.classList.contains('responsive-img')) {
+                        entry.target.classList.remove('scroll-effect')
+                    } else if (entry.target.classList.contains('cabin-text')) {
+                        entry.target.classList.remove('show');
+                    }                
+                }
+            })
+        })
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+    
+        return () => {
+          //window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
 
 
     return (
         <div className='main-content'>
             <div className='cabin-section'>
-                <img src={cabinOne} className='responsive-img'/>
-                <div className='cabin-text'>
+                <div className='responsive-img-container'> 
+                    <img src={cabinOne} className='responsive-img hidden'/>
+                </div>                  
+                <div className='cabin-text hidden'>
                     <div className='title'>
                     Lorem ipsum dolor
                     </div>
@@ -21,8 +55,10 @@ export default function MainContent() {
 
             </div>
             <div className='cabin-section inverse'>
-            <img src={cabinTwo} className='responsive-img'/>
-                <div className='cabin-text'>
+                <div className='responsive-img-container'> 
+                    <img src={cabinTwo} className='responsive-img hidden'/>
+                </div>                
+                <div className='cabin-text hidden'>
                     <div className='title'>
                     Lorem ipsum dolor
                     </div>
@@ -32,8 +68,10 @@ export default function MainContent() {
                 </div>
             </div>
             <div className='cabin-section'>
-            <img src={cabinThree} className='responsive-img'/>
-                <div className='cabin-text'>
+                <div className='responsive-img-container'> 
+                    <img src={cabinThree} className='responsive-img hidden'/>
+                </div>
+                <div className='cabin-text hidden'>
                     <div className='title'>
                     Lorem ipsum dolor
                     </div>

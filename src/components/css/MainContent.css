@@ -46,12 +46,41 @@
 
 .responsive-img-container {
     overflow: hidden;
+    width: 150%;
+
 }
 
 .responsive-img {
     width: 100%;  /* Scale the width of the image to the width of the container (or window) */
     display: block; /* Ensures there's no extra space below the image */
     height: auto; /* Ensure the image maintains its aspect ratio */
+    transform-origin: center;
+    transform: all 2s;
+    scale: 1.01;
+
+    
+}
+
+
+
+.hidden {
+    transition: all 1s;
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+}
+
+.scroll-effect {
+    scale: 1.05;
+    opacity: 1;
+}
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
 }
 
 
