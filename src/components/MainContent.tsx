@@ -2,7 +2,7 @@ import cabinOne from '../assets/main-content/cabin-one-opt.png';
 import cabinTwo from '../assets/main-content/cabin-two-opt.png';
 import cabinThree from '../assets/main-content/cabin-three-opt.png';
 import './css/MainContent.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function MainContent() {
 
@@ -33,17 +33,11 @@ export default function MainContent() {
     }
 
 
-    const addScrollListener = () => {
-        const container = document.querySelector('.content');
-        if (container) {
-            container.addEventListener('scroll', () => {
-                animateResponsiveImages(container);
-            });
-        }
-    }
+
 
 
     useEffect(() => {
+
 
 
         const observer = new IntersectionObserver((entries) => {
@@ -69,12 +63,19 @@ export default function MainContent() {
         const responsiveImages = document.querySelectorAll('.responsive-img');
         [...hiddenElements, ...responsiveImages].forEach((el) => observer.observe(el));
 
-        addScrollListener();
 
+        // Scroll scale effect
+        const container = document.querySelector('.content');
+        const scrollListener = () => {
+            animateResponsiveImages(container as HTMLElement);
+        }
+        if (container) {
+            container.addEventListener('scroll', scrollListener);
+        }
 
     
         return () => {
-          //window.removeEventListener('scroll', handleScroll);
+          if (container) container.removeEventListener('scroll', scrollListener);
         };
       }, []);
 

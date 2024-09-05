@@ -50,7 +50,6 @@ export default function Home() {
 
 
     const addScrollListener = () => {
-        const windowHeight = window.innerHeight;
         const container = document.querySelector('.content');
         const videoContainer = document.querySelector('.location-video-container') as HTMLElement;
         
