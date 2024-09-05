@@ -12,20 +12,22 @@
     color: #FFFFFF;
     flex-direction: column;
     align-items: center;
+
 }
 
 .cabin-section {
     display: flex;
     flex-direction: row;
     padding: 0px 50px 300px 50px;
+    justify-content: center;
 }
 
 
 .cabin-text {
-    width: 50%;
+    width: 35%;
     color: #FFF;
     font-family: 'Inter', sans-serif;
-    padding: 36px 100px;
+    padding: 10px 100px;
 }
 
 .title {
@@ -45,7 +47,7 @@
 }
 
 .responsive-img-container {
-    width: 100%; /* Make the container slightly smaller than the image */
+    width: 700px; /* Make the container slightly smaller than the image */
     height: 100%; /* Shrink height in proportion to the image */
     max-width: 1000px; /* Set maximum bounds for the container */
     max-height: 1000px; /* Set maximum bounds for the container */
@@ -53,12 +55,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: blue;
 
 }
 
 .responsive-img {
-    width: auto;  /* Scale the width of the image to the width of the container (or window) */
-    height: 550px; /* Ensure the image maintains its aspect ratio */
+    width: 700px;  /* Scale the width of the image to the width of the container (or window) */
+    height: auto; /* Ensure the image maintains its aspect ratio */
     object-fit: contain; /* Ensures the image covers the container */
     transform-origin: center;
     transform: all 1s;
