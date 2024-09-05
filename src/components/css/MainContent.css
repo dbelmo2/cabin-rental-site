@@ -17,12 +17,12 @@
 .cabin-section {
     display: flex;
     flex-direction: row;
-    padding: 0px 20px 300px 20px;
+    padding: 0px 50px 300px 50px;
 }
 
 
 .cabin-text {
-    width: 100%;
+    width: 50%;
     color: #FFF;
     font-family: 'Inter', sans-serif;
     padding: 36px 100px;
@@ -57,8 +57,8 @@
 }
 
 .responsive-img {
-    width: 100%;  /* Scale the width of the image to the width of the container (or window) */
-    height: auto; /* Ensure the image maintains its aspect ratio */
+    width: auto;  /* Scale the width of the image to the width of the container (or window) */
+    height: 550px; /* Ensure the image maintains its aspect ratio */
     object-fit: contain; /* Ensures the image covers the container */
     transform-origin: center;
     transform: all 1s;
