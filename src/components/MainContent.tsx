@@ -6,13 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function MainContent() {
 
-    const [scrollPosition, setScrollPosition] = useState(0); 
-    const [responsiveImagePosition, setResponsiveImagePosition] = useState({ top: 0, bottom: 0});
-    const elementRef = useRef(null);
-
-
-
-
     const animateResponsiveImages = (container: HTMLElement) => {
         const visibleResponsiveImages = document.querySelectorAll('.scale-effect') as unknown as HTMLElement[];
         const scrollPosition = container.scrollTop;
@@ -56,17 +49,18 @@ export default function MainContent() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-
                     if (entry.target.classList.contains('responsive-img')) {
                         entry.target.classList.add('scale-effect')
                     } else if (entry.target.classList.contains('cabin-text')) {
                         entry.target.classList.add('show');
+                        entry.target.classList.add('slide');
                     }
                 } else {
                     if (entry.target.classList.contains('responsive-img')) {
                         entry.target.classList.remove('scale-effect')
                     } else if (entry.target.classList.contains('cabin-text')) {
                         entry.target.classList.remove('show');
+                        entry.target.classList.remove('slide');
                     }                
                 }
             })
@@ -89,7 +83,7 @@ export default function MainContent() {
         <div className='main-content'>
             <div className='cabin-section'>
                 <div className='responsive-img-container'> 
-                    <img src={cabinOne} className='responsive-img one hidden'/>
+                    <img src={cabinOne} className='responsive-img one'/>
                 </div>                  
                 <div className='cabin-text hidden'>
                     <div className='title'>
@@ -103,7 +97,7 @@ export default function MainContent() {
             </div>
             <div className='cabin-section'>
                 <div className='responsive-img-container'> 
-                    <img src={cabinTwo} className='responsive-img two hidden'/>
+                    <img src={cabinTwo} className='responsive-img two'/>
                 </div>                
                 <div className='cabin-text hidden'>
                     <div className='title'>
@@ -116,7 +110,7 @@ export default function MainContent() {
             </div>
             <div className='cabin-section'>
                 <div className='responsive-img-container'> 
-                    <img src={cabinThree} className='responsive-img three hidden'/>
+                    <img src={cabinThree} className='responsive-img three'/>
                 </div>
                 <div className='cabin-text hidden'>
                     <div className='title'>

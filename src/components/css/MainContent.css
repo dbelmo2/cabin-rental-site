@@ -27,7 +27,10 @@
     width: 35%;
     color: #FFF;
     font-family: 'Inter', sans-serif;
-    padding: 10px 100px;
+    padding: 10px 50px;
+    filter: blur(1px);
+    transform: translateX(75px);
+    transition: all 1s;
 }
 
 .title {
@@ -47,6 +50,7 @@
 }
 
 .responsive-img-container {
+    margin-left: 50px;
     width: 700px; /* Make the container slightly smaller than the image */
     height: 100%; /* Shrink height in proportion to the image */
     max-width: 1000px; /* Set maximum bounds for the container */
@@ -55,7 +59,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: blue;
 
 }
 
@@ -64,15 +67,18 @@
     height: auto; /* Ensure the image maintains its aspect ratio */
     object-fit: contain; /* Ensures the image covers the container */
     transform-origin: center;
-    transform: all 1s;
+    transition: all ease-out 2s;
+
 }
 
-
-
+.slide {
+    transform: translateX(0);
+    filter: blur(0);
+}
 
 .hidden {
-    transition: all ease-out 2s;
-    opacity: 1;
+    transition: all ease-out 1s;
+    opacity: 0;
 }
 
 .show {
