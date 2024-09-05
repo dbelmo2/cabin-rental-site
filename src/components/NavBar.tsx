@@ -34,7 +34,6 @@ export default function NavBar() {
         }
 
       } else {
-        console.log('setting overflow to visible');
         document.body.style.overflow = 'visible';
       }
     }, [click])

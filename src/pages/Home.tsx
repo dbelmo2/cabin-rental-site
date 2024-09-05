@@ -75,13 +75,13 @@ export default function Home() {
 
 
         let lastPosition = 0;
-        console.log('Window height is ', windowHeight);
+        //console.log('Window height is ', windowHeight);
         if (container) {
             container.addEventListener('scroll', () => {
                 
 
                 const scrollPosition = container.scrollTop;
-                console.log('Current scroll position: ', scrollPosition);
+                //console.log('Current scroll position: ', scrollPosition);
                 if (lastPosition < scrollPosition) {
                     // scrolling down
                     if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
@@ -89,7 +89,7 @@ export default function Home() {
                         const perspectiveValue = String((contextPosition * perspectiveStraightenMultiplier) + tiltedPerspective);
                         const yValue = String(maxYTilt - (contextPosition * yStraightenMultiplier));
                         const xValue = String(maxXTilt - (contextPosition * xStraightenMultiplier));
-                        console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
                         videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
                     } else if (scrollPosition >= endStraighten && scrollPosition <= startTilt && videoContainer) {
                         videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
@@ -98,13 +98,13 @@ export default function Home() {
                         const perspectiveValue = String((contextPosition * perspectiveTiltMultiplier) + tiltedPerspective);
                         const yValue = String(contextPosition * yTiltValueMultiplier);
                         const xValue = String(contextPosition * xTiltValueMultiplier);
-                        console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
                         videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
                     } else if (scrollPosition >= endTilt && videoContainer) {
                         videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(-${maxYTilt}deg) rotateX(-${maxXTilt}deg)`
                     }
                 } else {
-                    console.log('scrolling up')
+                    //console.log('scrolling up')
                     // scrolling up
                     if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
                         const contextPosition = scrollPosition - startStraighten;
@@ -112,7 +112,7 @@ export default function Home() {
 
                         const yValue = String(maxYTilt - (contextPosition * yStraightenMultiplier));
                         const xValue = String(maxXTilt - (contextPosition * xStraightenMultiplier));
-                        console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
                         videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
                     } else if (scrollPosition <= startStraighten && scrollPosition <= endStraighten && videoContainer) {
                         videoContainer.style.transform = `perspective(${tiltedPerspective}px) rotateY(${maxYTilt}deg) rotateX(${maxXTilt}deg)`
@@ -121,7 +121,7 @@ export default function Home() {
                         const perspectiveValue = String((contextPosition * perspectiveTiltMultiplier) + tiltedPerspective);
                         const yValue = String(contextPosition * xTiltValueMultiplier);
                         const xValue = String(contextPosition * yTiltValueMultiplier);
-                        console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
                         videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
                     } else if (scrollPosition >= startTilt && scrollPosition <= endStraighten && videoContainer) {
                         videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
@@ -138,7 +138,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-      console.log('hello world')
+      //console.log('hello world')
       setHeroTextLengths();
       addScrollListener();
 
