@@ -1,6 +1,6 @@
-import cabinOne from '../assets/main-content/cabin-one.png';
-import cabinTwo from '../assets/main-content/cabin-two.png';
-import cabinThree from '../assets/main-content/cabin-three.png';
+import cabinOne from '../assets/main-content/cabin-one-opt.png';
+import cabinTwo from '../assets/main-content/cabin-two-opt.png';
+import cabinThree from '../assets/main-content/cabin-three-opt.png';
 import './css/MainContent.css';
 import { useEffect, useRef, useState } from 'react';
 

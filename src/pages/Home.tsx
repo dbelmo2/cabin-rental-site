@@ -1,10 +1,10 @@
 import './css/Home.css';
-import mainCabin from '../assets/main-cabin.jpg';
+import mainCabin from '../assets/main-cabin-opt.jpg';
 import tallCabinFive from '../assets/slider/tall-cabin-five-opt.jpg';
 import tallCabinTwo from '../assets/slider/tall-cabin-two-opt.jpg';
 import tallCabinThree from '../assets/slider/tall-cabin-three-opt.jpg';
 import HeroText from "../assets/hero-filled.svg?react";
-import LocationVideo from '../assets/colorado-video.mp4';
+import LocationVideo from '../assets/colorado-video-opt.mp4';
 import { useEffect } from 'react';
 import MainContent from '../components/MainContent';
 import '../components/css/Footer.css';
