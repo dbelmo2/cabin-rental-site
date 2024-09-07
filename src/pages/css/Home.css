@@ -147,9 +147,9 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
-    padding-bottom: 500px;
+    padding-bottom: 550px;
     transition: background-color 1s ease;
-    margin-bottom: 100px;
+    background-color: black;
   }
 
   .black-blur {
