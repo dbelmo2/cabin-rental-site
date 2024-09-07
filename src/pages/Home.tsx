@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import MainContent from '../components/MainContent';
 import '../components/css/Footer.css';
 import ExpandingPhotos from '../components/ExpandingPhotos';
+import Footer from '../components/Footer';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
 const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
@@ -51,7 +52,7 @@ export default function Home() {
     const addScrollListener = () => {
         const container = document.querySelector('.content');
         const videoContainer = document.querySelector('.location-video-container') as HTMLElement;
-        
+        // UOS
         const maxYTilt = 15;
         const maxXTilt = 10;
         const normalPerspective = 3000;
@@ -207,6 +208,7 @@ export default function Home() {
 
             <ExpandingPhotos />
             <MainContent />
+            <Footer />
 
         </div>
 </>

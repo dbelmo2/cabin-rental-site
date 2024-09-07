@@ -14,11 +14,13 @@ export default function MainContent() {
         const minScale = 1.00;
         const maxScale = 1.15;
 
-        const imageOneStartScalePosition = 3200;
-        const imageOneStopScaleEndPositon = 4600;
 
-        const imageTwoStartScalePosition = 4077;
-        const imageThreeStartScalePosition = 4956;
+        // UOS
+        const imageOneStartScalePosition = 3200 + 1700; // 1700 Calculated by taking the desired center position of the first image, and subtracting 3200
+        const imageOneStopScaleEndPositon = 4600 + 1700;
+
+        const imageTwoStartScalePosition = 4077 + 1700;
+        const imageThreeStartScalePosition = 4956 + 1700;
 
 
         const scaleMultipler = (maxScale - minScale) / (imageOneStopScaleEndPositon - imageOneStartScalePosition);
@@ -62,6 +64,7 @@ export default function MainContent() {
         })
         const hiddenElements = document.querySelectorAll('.hidden');
         const responsiveImages = document.querySelectorAll('.responsive-img');
+
         [...hiddenElements, ...responsiveImages].forEach((el) => observer.observe(el));
 
 
@@ -83,10 +86,27 @@ export default function MainContent() {
 
     return (
         <div className='main-content'>
-            <div className='cabin-section'>
-                <div className='responsive-img-container'> 
-                    <img src={cabinOne} className='responsive-img one'/>
-                </div>                  
+
+            <div className='cabin-image-list'>
+                <div className='full-vh-container'> 
+                    <div className='responsive-img-container'> 
+                        <img src={cabinOne} className='responsive-img one'/>
+                    </div>   
+                </div>
+
+                <div className='full-vh-container'>
+                    <div className='responsive-img-container'> 
+                        <img src={cabinTwo} className='responsive-img two'/>
+                    </div>
+                </div>
+                <div className='full-vh-container'>
+                    <div className='responsive-img-container'> 
+                        <img src={cabinThree} className='responsive-img three'/>
+                    </div>
+                </div>
+            </div>
+
+            <div className='cabin-description-list'>
                 <div className='cabin-text hidden'>
                     <div className='title'>
                     Lorem ipsum dolor
@@ -97,33 +117,6 @@ export default function MainContent() {
                 </div>
 
             </div>
-            <div className='cabin-section'>
-                <div className='responsive-img-container'> 
-                    <img src={cabinTwo} className='responsive-img two'/>
-                </div>                
-                <div className='cabin-text hidden'>
-                    <div className='title'>
-                    Lorem ipsum dolor
-                    </div>
-                    <div className='description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-            </div>
-            <div className='cabin-section'>
-                <div className='responsive-img-container'> 
-                    <img src={cabinThree} className='responsive-img three'/>
-                </div>
-                <div className='cabin-text hidden'>
-                    <div className='title'>
-                    Lorem ipsum dolor
-                    </div>
-                    <div className='description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div> 
-                </div>
-            </div>
-            <Footer />
 
         </div>
     )
