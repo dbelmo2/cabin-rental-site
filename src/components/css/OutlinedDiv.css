@@ -1,0 +1,14 @@
+.outer-div {
+    padding: 10px 10px;
+    outline: white;
+    outline-style: solid;
+    outline-width: 1px;
+}
+
+.inner-div {
+    padding: 5px;
+    outline-color: white;
+    outline-width: 1px;
+    outline-style: solid;
+    padding: 10px 50px;
+}

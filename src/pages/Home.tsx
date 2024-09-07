@@ -1,13 +1,12 @@
 import './css/Home.css';
 import mainCabin from '../assets/main-cabin-opt.jpg';
-import tallCabinFive from '../assets/slider/tall-cabin-five-opt.jpg';
-import tallCabinTwo from '../assets/slider/tall-cabin-two-opt.jpg';
-import tallCabinThree from '../assets/slider/tall-cabin-three-opt.jpg';
+
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video-opt.mp4';
 import { useEffect } from 'react';
 import MainContent from '../components/MainContent';
 import '../components/css/Footer.css';
+import ExpandingPhotos from '../components/ExpandingPhotos';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
 const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
@@ -57,10 +56,10 @@ export default function Home() {
         const maxXTilt = 10;
         const normalPerspective = 3000;
         const tiltedPerspective = 1000;
-        const startStraighten = 724;
-        const endStraighten = 1524;
-        const startTilt = 1600;
-        const endTilt = 2240;
+        const startStraighten = 724 + 600; // 600 here is calculated by taking the old scrollPosition where the video was straight (1500px) and subtracting the 
+        const endStraighten = 1524 + 600;  // vertical offset of the new desired scrollPosition where the video is straight. 
+        const startTilt = 1600 + 600;
+        const endTilt = 2240 + 600;
 
         const yStraightenMultiplier = maxYTilt / (endStraighten - startStraighten);
         const xStraightenMultiplier = maxXTilt / (endStraighten - startStraighten);
@@ -71,7 +70,7 @@ export default function Home() {
         const perspectiveTiltMultiplier = (normalPerspective - tiltedPerspective) / (endTilt - startTilt);
 
 
-
+        // Old scroll position where straight: 1500px
 
         let lastPosition = 0;
         //console.log('Window height is ', windowHeight);
@@ -80,6 +79,7 @@ export default function Home() {
                 
 
                 const scrollPosition = container.scrollTop;
+                console.log('scroll position: ', scrollPosition);
                 //console.log('Current scroll position: ', scrollPosition);
                 if (lastPosition < scrollPosition) {
                     // scrolling down
@@ -126,7 +126,36 @@ export default function Home() {
                         videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
                     }
                 }
-        
+                
+                const locationsContentDiv = document.querySelector('.locations-content') as unknown as HTMLElement;
+                const blur = document.querySelector('.black-blur') as unknown as HTMLElement;
+                const quote = document.querySelector('.quote-container') as unknown as HTMLElement;
+                if (locationsContentDiv) {
+                    if (scrollPosition >= 1700 && scrollPosition <= 2600) {
+                        console.log('setting backgroundColor to #0e0d0d');
+                        locationsContentDiv.style.backgroundColor = '#12211b'
+                        blur.style.background = 'linear-gradient(to bottom, rgba(18, 33, 27, 0) 0%, rgba(18, 33, 27, 1) 100%)'
+                    } else if (scrollPosition >= 2600) {
+                        locationsContentDiv.style.backgroundColor = 'black';
+                        blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
+
+                    } else {
+                        locationsContentDiv.style.backgroundColor = 'black'
+                        blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)';
+
+
+                    }
+                }
+
+                if (quote) {
+                    if (scrollPosition >= 1100) {
+                        console.log('setting backgroundColor to #0e0d0d');
+                        quote.style.opacity = '1'
+                    }
+                }
+
+
+
 
                 lastPosition = scrollPosition;
             })
@@ -153,10 +182,14 @@ export default function Home() {
               <HeroText  className='title-container'/>
             </div>
 
+            
+
             <div className='locations-content'>
                 <div className='black-blur'>
                 </div>
-                <div className='great-outdoors'>
+
+                <div className='quote-container'>
+                    "The earth has music for those who listen." - William Shakespeare
                 </div>
                 <div className='location-video-container'>
                     <video className='location-video' autoPlay={true} loop muted={true} playsInline>
@@ -164,38 +197,15 @@ export default function Home() {
                     </video>
                     <div className='video-text'>
                       <div className='video-text-inner'>
-                        Witness the great outdoors...
+                        Witness the Centennial State
 
                       </div>
                     </div>
                 </div>
             </div>
 
-            <div className='locations-photos'>
-
-                    <div className='locations-photos-slider'>
-                        <div className='locations-photo-container'>
-                            <img src={tallCabinFive} className='locations-photo'/>
-                        </div>
-                        <div className='locations-photo-container centered-photo'>
-                            <div className='locations-photos-header'>
-                                <div className='locations-photos-header-inner'>
-                                    Like never before
-                                </div>    
-                            </div>
-                            <img src={tallCabinTwo} className='locations-photo'/>
-                        </div>
-                        <div className='locations-photo-container'>
-                            <img src={tallCabinThree} className='locations-photo'/>
-                        </div>
-                    </div>
-                    {/*<div className='expanding-line'></div>*/}
-
-            </div>
-
-            <MainContent>
-                
-            </MainContent>
+            <ExpandingPhotos />
+            <MainContent />
         </div>
     )
 }

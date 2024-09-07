@@ -122,15 +122,7 @@
 
 
   /* top: 392px for perfect match */
-  .black-blur {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    width: 100vw;
-    height: 192px;
-    z-index: 2;
-    position: relative;
-    top: -200px;
-    margin-bottom: 337px;
-  }
+
 
   .locations-black-intro {
     position: relative;
@@ -144,10 +136,12 @@
 
   .locations-content {
     position: relative;
-    background-color: black;
     width: 100vw;
     display: flex;
     flex-direction: column;
+    padding-bottom: 550px;
+    transition: background-color 1s ease;
+    background-color: black;
   }
 
   .black-blur {
@@ -157,6 +151,7 @@
     z-index: 2;
     position: relative;
     top: -192px;
+    transition: all 1s ease;
   }
 
 
@@ -195,6 +190,7 @@
     -webkit-transform-style: preserve-3d;
     transform: perspective(1500px) rotateY(7deg) rotateX(7deg);
     transition: transform 0.75s ease-out;
+    margin-top: 350px;
   }
 
   .location-video {
@@ -205,40 +201,9 @@
     
   }
 
-  .locations-photos {
-    margin-bottom: 100px;
-    margin: 400px 0px;
-    width: 100vw;
-    height: 1000px;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
 
-  .locations-photos-header {
-    color: white;
-    font-family: 'Italiana', sans-serif;
-    font-size: 50px;
-    padding: 20px 0px;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px 10px;
-    outline: white;
-    outline-style: solid;
-    outline-width: 1px;
-  }
 
-  .locations-photos-header-inner {
-    padding: 5px;
-    outline-color: white;
-    outline-width: 1px;
-    outline-style: solid;
-    padding: 10px 50px;
-  }
+
 
 
   .locations-photos-description {
@@ -253,47 +218,26 @@
   
 
 
-  .expanding-line {
-    width: 0;
-    height: 2px;
-    background-color: white;
-    animation: expand 5s forwards;
-    animation-timeline: view();
-    animation-range-end: entry 210px;
-    animation-range-start: entry 100px;
-    margin: 25px 0px;
+
+
+
+  .quote-container {
+    font-size: 50px;
+    max-width: 750px;
+    align-self: center;
+    text-align: center;
+    font-family: 'Italiana', sans-serif;
+    color: white;
+    margin-bottom: 175px;
+    transition: opacity 3s ease;
+    opacity: 0;
   }
 
 
-  .locations-photos-slider {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    margin-top: 65px;
-  }
 
-  .locations-photo-container {
-    height: 100%;
-    flex: 1;
-    overflow: hidden;
-    transition: flex 1.5s ease; /* Smooth transition effect */
-  }
 
-  .locations-photo-container:hover {
-    flex: 1.2; /* Increase the flex value slightly on hover to expand the column */
-  }
+
   
-  .locations-photos-slider .locations-photo-container:not(:hover) {
-    flex: 0.9; /* Slightly decrease the flex value of non-hovered columns */
-  }
-  
-  .locations-photo {
-    width: 100%;
-    height: 150%; /* Increase the height slightly to zoom in */
-    object-fit: cover;
-  }
 
 
 

@@ -8,7 +8,7 @@
     height: fit-content;
     width: 100vw;
     display: flex;
-    background: linear-gradient(to bottom, black, #191616);
+    background: #191616;
     color: #FFFFFF;
     flex-direction: column;
     align-items: center;
@@ -67,7 +67,7 @@
     height: auto; /* Ensure the image maintains its aspect ratio */
     object-fit: contain; /* Ensures the image covers the container */
     transform-origin: center;
-    transition: all ease-out 2s;
+    transition: all ease-out 1s;
 
 }
 
