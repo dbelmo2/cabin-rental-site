@@ -1,5 +1,102 @@
-.footer {
+.footer-container {
+    background-color: #191616;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+.footer-svg {
+    height: min-content;
+}
+
+.footer-content {
     background-color: black;
-    width: 100%;
+    width: 100vw;
+    z-index: 100;
     height: 400px;
+    display: flex;
+}
+
+.footer-about-us {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    padding: 25px 50px;
+    align-items: center;
+}
+
+.footer-about-us-title {
+    padding: 15px 0px;
+    font-size: 30px;
+    font-family: "Italiana", sans-serif;
+    width: 60%;
+    
+}
+
+.footer-about-us-text {
+    font-size: 16px;
+    font-family: 'Quattrocento Sans', sans-serif;
+    padding: 15px 0px;
+    width: 60%;
+
+}
+
+
+.footer-contact-us {
+    display: flex;
+    width: 70%;
+    height: 100%;
+}
+
+.footer-social-media {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 25px;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-social-media-title {
+    width: fit-content;
+    font-size: 30px;
+    font-family: "Italiana", sans-serif;
+}
+
+.footer-social-media-list {
+    padding: 0px 0px;
+    width: 50%;
+}
+
+.footer-social-media-link {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    font-family: 'Quattrocento Sans', sans-serif;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.footer-contact-info {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 25px;
+    width: 50%;
+    height: 100%;
+}
+
+.footer-contact-info-title {
+    font-family: "Italiana", sans-serif;
+    font-size: 30px;
+    width: fit-content;
+    
+}
+.footer-contact-info-item {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    font-family: 'Quattrocento Sans', sans-serif;
+    align-items: center;
+    padding: 10px 0px;
 }

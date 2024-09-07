@@ -176,6 +176,7 @@ export default function Home() {
     // data-aos html tag for css animation on scroll
 
     return (
+        <>
         <div className='content'>
             <div className='black-shadow'>
               <img src={mainCabin} className='main-cabin'/>
@@ -189,7 +190,7 @@ export default function Home() {
                 </div>
 
                 <div className='quote-container'>
-                    "The earth has music for those who listen." - William Shakespeare
+                    "The earth has music for those who listen." - <span style={{ fontSize: 35}}>William Shakespeare</span>
                 </div>
                 <div className='location-video-container'>
                     <video className='location-video' autoPlay={true} loop muted={true} playsInline>
@@ -206,7 +207,9 @@ export default function Home() {
 
             <ExpandingPhotos />
             <MainContent />
+
         </div>
+</>
     )
 }
 
