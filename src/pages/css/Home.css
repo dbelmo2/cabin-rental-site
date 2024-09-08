@@ -191,7 +191,7 @@
     text-align: center;
     position: relative;
     height: 737px; /* old value 737px */
-    width: 80vw; /* old value 90vw */
+    width: 70vw; /* old value 90vw */
     align-self: center;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
