@@ -3,7 +3,6 @@ import cabinTwo from '../assets/main-content/cabin-two-opt.png';
 import cabinThree from '../assets/main-content/cabin-three-opt.png';
 import './css/MainContent.css';
 import { useEffect } from 'react';
-import Footer from './Footer';
 
 export default function MainContent() {
 
