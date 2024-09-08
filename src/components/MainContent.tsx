@@ -243,35 +243,35 @@ export default function MainContent() {
                 <div className='cabin-description-list'>
                     <div id='cabin-text-1' className='cabin-text left-hidden smooth-transition'>
                         <div id='title-1' className='title left-hidden smooth-transition'>
-                        Cabin Image 1
+                        Whispering Pines
                         </div>
                         <div id='desc-1' className='description left-hidden smooth-transition'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Nestled deep in the Whispering Pines Woods, this cozy cabin offers complete tranquility, surrounded by towering trees and untouched nature. Escape the noise and unwind in the heart of the forest.
                         </div>
                         <PillButton id='book-button-1' className='book-button left-hidden smooth-transition'>
-                            Book Now
+                            Reserve Now
                         </PillButton>
                     </div>
                     <div id='cabin-text-2' className='cabin-text left-hidden smooth-transition'>
                         <div id='title-2' className='title left-hidden smooth-transition'>
-                        Cabin Image 2
+                        Crystalview Lake
                         </div>
                         <div id='desc-2' className='description left-hidden smooth-transition'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Perched on the edge of Crystalview Lake, this serene cabin offers stunning mountain views and the tranquility of a nearby forest. Relax by the water and enjoy the beauty of towering peaks surrounding you.
                         </div>
                         <PillButton id='book-button-2'className='book-button left-hidden smooth-transition'>
-                            Book Now
+                            Reserve Now
                         </PillButton>
                     </div>
                     <div id='cabin-text-3' className='cabin-text left-hidden smooth-transition'>
                         <div id='title-3' className='title left-hidden smooth-transition'>
-                        Cabin Image 3
+                        Frostpine Summit
                         </div>
                         <div id='desc-3' className='description left-hidden smooth-transition'>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Located atop Everbreeze Mountain, this secluded cabin is surrounded by graceful silver birches and the cool, steady winds of the high altitude. A tranquil retreat far above the world below, it's the perfect escape for those seeking peace and breathtaking views.
                         </div>
                         <PillButton id='book-button-3' className='book-button left-hidden smooth-transition' >
-                            Book Now
+                            Reserve Now
                         </PillButton>
                     </div>
 
