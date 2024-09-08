@@ -1,24 +1,36 @@
 
+.main-content-container {
+    background-color: #1a1a1d;
+    transition: all 1s ease;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 
 .main-content {
     height: fit-content;
     width: 100vw;
     display: flex;
-    background: #191616;
     color: #FFFFFF;
     flex-direction: row;
     position: relative;
-    padding-top: 35px;
-    transition: background-color 1s ease;
-    
+    padding-top: 75px;
+    transition: all 1s ease;
+ 
 
+}
+
+.starting-title {
+    font-family: "Italiana", sans-serif;
+    color: white;
+    font-size: 50px;
+    padding: 50px 0px;
 }
 
 .cabin-image-list {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    
     width: 50%;
 }
 
@@ -32,6 +44,7 @@
     position: sticky;
     top: 0;
     align-self: flex-start;
+
 }
 
 
@@ -40,7 +53,6 @@
     color: #FFF;
     font-family: 'Inter', sans-serif;
     padding: 10px 50px;
-    filter: blur(1px);
     transform: translateX(75px);
     transition: all 1s;
     position: absolute;
@@ -89,20 +101,61 @@
 
 }
 
-
-
-.hidden {
-    transition: all ease 1s;
-    opacity: 0;
-    transform: translateX(-50px);
+#view-all-button {
+    margin-top: 50px;
 }
 
-.show {
-    opacity: 1;
-    transform: translateX(0px);
-    filter: blur(0);
 
+.book-button {
+    margin-top: 50px !important;
 }
+
+.end-title {
+    color: white;
+    font-family: "Italiana", sans-serif;
+    font-size: 50px;
+    margin-top: 50px;
+}
+
+/** Sliding content animation **/
+/** add blur? **/
+.smooth-transition {
+    transition: all ease 1s !important;
+}
+
+.left-hidden {
+    user-select: none; /* Disables text selection */
+    opacity: 0 !important;
+    transform: translateX(-100px) !important;
+    z-index: 0;
+    cursor: default !important;
+}
+
+.middle-show {
+    opacity: 1 !important;
+    transform: translateX(0px) !important;
+    z-index: 3;
+}
+
+.right-hidden {
+    user-select: none; /* Disables text selection */
+    opacity: 0 !important;
+    transform: translateX(100px) !important;
+    z-index: 0;
+    cursor: default !important;
+}
+
+.under-hidden {
+    opacity: 0 !important;
+    transform: translateY(50px) !important;
+    transition: all 1s ease !important;
+}
+
+.under-show {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
+}
+
 
 .scale-effect {
     opacity: 1;

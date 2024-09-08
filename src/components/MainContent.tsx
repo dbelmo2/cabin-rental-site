@@ -1,10 +1,13 @@
 import cabinOne from '../assets/main-content/cabin-one-opt.png';
 import cabinTwo from '../assets/main-content/cabin-two-opt.png';
-import cabinThree from '../assets/main-content/cabin-three-opt.png';
+import cabinThree from '../assets/main-content/dark-cabin-large.jpg';
 import './css/MainContent.css';
 import { useEffect } from 'react';
+import PillButton from './PillButton';
 
 export default function MainContent() {
+
+
 
     const animateResponsiveImages = (container: HTMLElement) => {
         const visibleResponsiveImages = document.querySelectorAll('.scale-effect') as unknown as HTMLElement[];
@@ -15,11 +18,11 @@ export default function MainContent() {
 
 
         // UOS
-        const imageOneStartScalePosition = 3200 + 1700; // 1700 Calculated by taking the desired center position of the first image, and subtracting 3200
-        const imageOneStopScaleEndPositon = 4600 + 1700;
+        const imageOneStartScalePosition = 3200 + 1900; // 1700 Calculated by taking the desired center position of the first image, and subtracting 3200
+        const imageOneStopScaleEndPositon = 4600 + 1900;
 
-        const imageTwoStartScalePosition = 4077 + 1700;
-        const imageThreeStartScalePosition = 4956 + 1700;
+        const imageTwoStartScalePosition = 4077 + 1900;
+        const imageThreeStartScalePosition = 4956 + 1900;
 
 
         const scaleMultipler = (maxScale - minScale) / (imageOneStopScaleEndPositon - imageOneStartScalePosition);
@@ -40,6 +43,7 @@ export default function MainContent() {
 
     useEffect(() => {
 
+        let previousScrollY = 0;
 
 
         const scalingImagesObserver = new IntersectionObserver((entries) => {
@@ -52,55 +56,138 @@ export default function MainContent() {
             });
         });
 
-        const slidingTextObserver = new IntersectionObserver((entries) => {
+        const horizontalSlidingObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
+                const container = document.querySelector('.content');
+                if (container) {
+                    const currentScrollY = container?.scrollTop;
 
-                const imageIndex = entry.target.classList.contains('one') ? 1 
-                    : entry.target.classList.contains('two') ? 2 
-                    : 3;
+                    const imageIndex = entry.target.classList.contains('one') ? 1 
+                        : entry.target.classList.contains('two') ? 2 
+                        : 3;
+    
+                    
+                    const correspondingText = document.getElementById(`cabin-text-${imageIndex}`);
+                    const correspondingBookButton = document.getElementById(`book-button-${imageIndex}`);
+                    const correspondingTitle = document.getElementById(`title-${imageIndex}`);
+                    const correspondingDesc = document.getElementById(`desc-${imageIndex}`);
 
-                
-                const correspondingText =  imageIndex === 1 ? document.getElementById('cabin-text-one') 
-                    : imageIndex === 2 ? document.getElementById('cabin-text-two')
-                    : document.getElementById('cabin-text-three');
+                    const elementsToSlideAnimate = [correspondingText, correspondingBookButton, correspondingTitle, correspondingDesc];
+
+                    
+    
+    
+                    const colorToSwitchTo = imageIndex === 1 ? '#302e25' : imageIndex === 2 ? '#627372' : '#1a1a1d'; // old value 1a1a1d, good: 1a1a1d
+                    const mainContentDiv = document.querySelector('.main-content-container') as unknown as HTMLElement;
+                    const locationsPhotosDiv  = document.querySelector('.locations-photos') as unknown as HTMLElement;
+                    const footerContainerDiv = document.querySelector('.footer-container') as unknown as HTMLElement;
+    
+    
+                    if (mainContentDiv) {
+                        if (entry.isIntersecting) { // Image is coming into view
+                            // BG color changing 
+                            mainContentDiv.style.backgroundColor = colorToSwitchTo;
+                            footerContainerDiv.style.backgroundColor = colorToSwitchTo
+                            locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', colorToSwitchTo);
+    
+    
+                            if (currentScrollY > previousScrollY) { // scrolling down, text sliding into view from left side to the right
+                                elementsToSlideAnimate.forEach((slidingElement) => {
+
+                                    if (slidingElement) {
+                                        slidingElement.classList.remove('left-hidden');
+                                        slidingElement.classList.add('middle-show');
+                                        slidingElement.classList.remove('right-hidden');
+                                    }
+                                    if (slidingElement?.classList.contains('book-button')) {
+                                        const bookButton = slidingElement as HTMLButtonElement;
+                                        bookButton.disabled = false;
+                                    }
+
+                                })
+                            } else { // scrolling up, text sliding into view from the right side to the left
+                                elementsToSlideAnimate.forEach((slidingElement) => {
+                                    if (slidingElement) {
+                                        slidingElement.classList.remove('right-hidden'); 
+                                        slidingElement.classList.add('middle-show');
+                                        slidingElement.classList.remove('left-hidden');
+                                    }
+                                    if (slidingElement?.classList.contains('book-button')) {
+                                        const bookButton = slidingElement as HTMLButtonElement;
+                                        bookButton.disabled = false;
+                                    }
+                                })
+                            }
+                        } else { // Image is going out of view 
+                            // BG color changing edge cases
+
+                            if (imageIndex === 1) {
+                                locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', 'black');
+                                mainContentDiv.style.backgroundColor = 'black';
+                            }
 
 
-                const colorToSwitchTo = imageIndex === 1 ? '#302e25' : imageIndex === 2 ? '#627372' : '#191616';
-                const mainContentDiv = document.querySelector('.main-content') as unknown as HTMLElement;
-                const locationsPhotosDiv  = document.querySelector('.locations-photos') as unknown as HTMLElement;
-                const footerContainerDiv = document.querySelector('.footer-container') as unknown as HTMLElement;
+                            if (currentScrollY > previousScrollY) { // scrolling down, text sliding out of view from the left to the right
+                                elementsToSlideAnimate.forEach((slidingElement) => {
+                                    if (slidingElement) {
+                                        slidingElement.classList.remove('middle-show');
+                                        slidingElement.classList.add('right-hidden');
+                                        slidingElement.classList.remove('left-hidden');
+                                    }
+                                    if (slidingElement?.classList.contains('book-button')) {
+                                        const bookButton = slidingElement as HTMLButtonElement;
+                                        bookButton.disabled = true;
+                                    }
+                                })
+                                
 
 
+                            } else { // scrolling up, text sliding out of view from the right to the left
+                                elementsToSlideAnimate.forEach((slidingElement) => {
+                                    if (slidingElement) {
+                                        slidingElement.classList.remove('middle-show');
+                                        slidingElement.classList.add('left-hidden');
+                                        slidingElement.classList.remove('right-hidden');
 
-                if (entry.isIntersecting) {
-                    if (correspondingText && mainContentDiv) {
-                        mainContentDiv.style.backgroundColor = colorToSwitchTo;
-                        footerContainerDiv.style.backgroundColor = colorToSwitchTo
-                        locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', colorToSwitchTo);
-                        correspondingText.classList.add('show');
+                                    }
+                                    if (slidingElement?.classList.contains('book-button')) {
+                                        const bookButton = slidingElement as HTMLButtonElement;
+                                        bookButton.disabled = true;
+                                    }
+                                })
+
+                            }
+                        }
                     }
-                } else {
-                    if (correspondingText && mainContentDiv) {
-                        correspondingText.classList.remove('show');
-                    }
-                    if (imageIndex === 1) {
-                        locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', 'black');
-                        mainContentDiv.style.backgroundColor = 'black';
-                    }
-
+    
+                    previousScrollY = currentScrollY;
                 }
             })
         }, {
           threshold: 0.5
         });
 
+        const verticalSlidingObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                console.log('inside vertical sliding observer');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('under-show')
+                } else {
+                    entry.target.classList.remove('under-show')
+                }
+            });
+        });
 
 
-        const slidingText = document.querySelectorAll('.responsive-img');
+        const underHiddenElements = document.querySelectorAll('.under-hidden');
+        underHiddenElements.forEach((el) => verticalSlidingObserver.observe(el));
+
+ 
+
         const scalingImages = document.querySelectorAll('.responsive-img');
-
         scalingImages.forEach((el) => scalingImagesObserver.observe(el));
-        slidingText.forEach((el) => slidingTextObserver.observe(el));
+        scalingImages.forEach((el) => horizontalSlidingObserver.observe(el));
+        
 
 
         // Scroll scale effect
@@ -120,55 +207,86 @@ export default function MainContent() {
 
 
     return (
-        <div className='main-content'>
 
-            <div className='cabin-image-list'>
-                <div className='full-vh-container'> 
-                    <div className='responsive-img-container'> 
-                        <img src={cabinOne} className='responsive-img one'/>
-                    </div>   
-                </div>
+        <div className='main-content-container'>
 
-                <div className='full-vh-container'>
-                    <div className='responsive-img-container'> 
-                        <img src={cabinTwo} className='responsive-img two'/>
+            <div className='starting-title under-hidden'>
+                Your adventure starts here
+            </div>
+
+
+            <div className='main-content'>
+
+                <div className='cabin-image-list'>
+                    <div className='full-vh-container'> 
+                        <div className='responsive-img-container'> 
+                            <img src={cabinOne} className='responsive-img one'/>
+                        </div>   
+                    </div>
+
+                    <div className='full-vh-container'>
+                        <div className='responsive-img-container'> 
+                            <img src={cabinTwo} className='responsive-img two'/>
+                        </div>
+                    </div>
+                    <div className='full-vh-container'>
+                        <div className='responsive-img-container'> 
+                            <img src={cabinThree} className='responsive-img three'/>
+                        </div>
                     </div>
                 </div>
-                <div className='full-vh-container'>
-                    <div className='responsive-img-container'> 
-                        <img src={cabinThree} className='responsive-img three'/>
+                    {/* 
+                        If issues occur with the button, title, and desc sliding further than their container,
+                        try removing the left-hidden and smooth-transition classes from the container, as well as
+                        removing the container element from the elementsToSlideAnimate array above ^. 
+                    */}
+                <div className='cabin-description-list'>
+                    <div id='cabin-text-1' className='cabin-text left-hidden smooth-transition'>
+                        <div id='title-1' className='title left-hidden smooth-transition'>
+                        Cabin Image 1
+                        </div>
+                        <div id='desc-1' className='description left-hidden smooth-transition'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                        <PillButton id='book-button-1' className='book-button left-hidden smooth-transition'>
+                            Book Now
+                        </PillButton>
                     </div>
+                    <div id='cabin-text-2' className='cabin-text left-hidden smooth-transition'>
+                        <div id='title-2' className='title left-hidden smooth-transition'>
+                        Cabin Image 2
+                        </div>
+                        <div id='desc-2' className='description left-hidden smooth-transition'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                        <PillButton id='book-button-2'className='book-button left-hidden smooth-transition'>
+                            Book Now
+                        </PillButton>
+                    </div>
+                    <div id='cabin-text-3' className='cabin-text left-hidden smooth-transition'>
+                        <div id='title-3' className='title left-hidden smooth-transition'>
+                        Cabin Image 3
+                        </div>
+                        <div id='desc-3' className='description left-hidden smooth-transition'>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                        <PillButton id='book-button-3' className='book-button left-hidden smooth-transition' >
+                            Book Now
+                        </PillButton>
+                    </div>
+
+
+
                 </div>
             </div>
 
-            <div className='cabin-description-list'>
-                <div id='cabin-text-one' className='cabin-text hidden'>
-                    <div className='title'>
-                    Lorem ipsum dolor
-                    </div>
-                    <div className='description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
+                <div className='end-title under-hidden'>
+                    See Our Full Selection
                 </div>
-                <div id='cabin-text-two' className='cabin-text hidden'>
-                    <div className='title'>
-                    Lorem ipsum dolor
-                    </div>
-                    <div className='description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-                <div id='cabin-text-three' className='cabin-text hidden'>
-                    <div className='title'>
-                    Lorem ipsum dolor
-                    </div>
-                    <div className='description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </div>
-                </div>
-
-            </div>
-
+                <PillButton id='view-all-button' className='under-hidden'> 
+                        View All Resorts
+                </PillButton>
         </div>
+
     )
 }
