@@ -43,29 +43,60 @@ export default function MainContent() {
 
 
 
-        const observer = new IntersectionObserver((entries) => {
+        const scalingImagesObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    if (entry.target.classList.contains('responsive-img')) {
-                        entry.target.classList.add('scale-effect')
-                    } else if (entry.target.classList.contains('cabin-text')) {
-                        entry.target.classList.add('show');
-                        entry.target.classList.add('slide');
+                    entry.target.classList.add('scale-effect')
+                } else {
+                    entry.target.classList.remove('scale-effect')
+                }
+            });
+        });
+
+        const slidingTextObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+
+                const imageIndex = entry.target.classList.contains('one') ? 1 
+                    : entry.target.classList.contains('two') ? 2 
+                    : 3;
+
+                
+                const correspondingText =  imageIndex === 1 ? document.getElementById('cabin-text-one') 
+                    : imageIndex === 2 ? document.getElementById('cabin-text-two')
+                    : document.getElementById('cabin-text-three');
+
+
+                const colorToSwitchTo = imageIndex === 1 ? '#302e25' : imageIndex === 2 ? '#627372' : '#191616';
+                const mainContentDiv = document.querySelector('.main-content') as unknown as HTMLElement;
+                const locationsPhotosDiv  = document.querySelector('.locations-photos') as unknown as HTMLElement;
+
+
+                if (entry.isIntersecting) {
+                    if (correspondingText && mainContentDiv) {
+                        mainContentDiv.style.backgroundColor = colorToSwitchTo;
+                        locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', colorToSwitchTo);
+                        correspondingText.classList.add('slide');
+                        correspondingText.classList.add('show');
                     }
                 } else {
-                    if (entry.target.classList.contains('responsive-img')) {
-                        entry.target.classList.remove('scale-effect')
-                    } else if (entry.target.classList.contains('cabin-text')) {
-                        entry.target.classList.remove('show');
-                        entry.target.classList.remove('slide');
-                    }                
+                    if (correspondingText && mainContentDiv) {
+                        correspondingText.classList.remove('show');
+                        correspondingText.classList.remove('slide');
+                    }
+
                 }
             })
-        })
-        const hiddenElements = document.querySelectorAll('.hidden');
-        const responsiveImages = document.querySelectorAll('.responsive-img');
+        }, {
+          threshold: 0.5
+        });
 
-        [...hiddenElements, ...responsiveImages].forEach((el) => observer.observe(el));
+
+
+        const slidingText = document.querySelectorAll('.responsive-img');
+        const scalingImages = document.querySelectorAll('.responsive-img');
+
+        scalingImages.forEach((el) => scalingImagesObserver.observe(el));
+        slidingText.forEach((el) => slidingTextObserver.observe(el));
 
 
         // Scroll scale effect
@@ -107,7 +138,23 @@ export default function MainContent() {
             </div>
 
             <div className='cabin-description-list'>
-                <div className='cabin-text hidden'>
+                <div id='cabin-text-one' className='cabin-text hidden'>
+                    <div className='title'>
+                    Lorem ipsum dolor
+                    </div>
+                    <div className='description'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+                <div id='cabin-text-two' className='cabin-text hidden'>
+                    <div className='title'>
+                    Lorem ipsum dolor
+                    </div>
+                    <div className='description'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+                <div id='cabin-text-three' className='cabin-text hidden'>
                     <div className='title'>
                     Lorem ipsum dolor
                     </div>

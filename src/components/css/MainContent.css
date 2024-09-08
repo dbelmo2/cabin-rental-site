@@ -9,7 +9,7 @@
     flex-direction: row;
     position: relative;
     padding-top: 35px;
-
+    transition: background-color 1s ease;
     
 
 }
@@ -43,6 +43,7 @@
     filter: blur(1px);
     transform: translateX(75px);
     transition: all 1s;
+    position: absolute;
 }
 
 .title {
@@ -96,10 +97,12 @@
 .hidden {
     transition: all ease-out 1s;
     opacity: 0;
+    transform: translateX(-50px);
 }
 
 .show {
     opacity: 1;
+    transform: translateX(0px);
 }
 
 .scale-effect {
