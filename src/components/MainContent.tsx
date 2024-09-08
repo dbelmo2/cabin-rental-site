@@ -78,13 +78,11 @@ export default function MainContent() {
                         mainContentDiv.style.backgroundColor = colorToSwitchTo;
                         footerContainerDiv.style.backgroundColor = colorToSwitchTo
                         locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', colorToSwitchTo);
-                        correspondingText.classList.add('slide');
                         correspondingText.classList.add('show');
                     }
                 } else {
                     if (correspondingText && mainContentDiv) {
                         correspondingText.classList.remove('show');
-                        correspondingText.classList.remove('slide');
                     }
                     if (imageIndex === 1) {
                         locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', 'black');
