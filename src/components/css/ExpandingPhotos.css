@@ -8,6 +8,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    
   }
 
   .locations-photos::after {
@@ -18,7 +19,7 @@
     width: 100%;
     height: 50%;
     transition: background-color 1s ease;
-    background-color: var(--locations-photos-pseudo, #191616); /* Bottom half color */
+    background-color: var(--locations-photos-pseudo, #1a1a1d); /* Bottom half color */
   }
 
   .locations-photos-slider {
@@ -66,7 +67,7 @@
   }
 
 
-  .locations-photo-text-container {
+  .locations-photo-content {
     color: white;
     font-family: 'Italiana', sans-serif;
     font-size: 60px;
@@ -77,6 +78,7 @@
     display: flex;
     flex-direction: column;
     font-weight: 100;
+    align-items: center;
   }
 
   .locations-photo-text-title {
@@ -96,9 +98,15 @@
     font-size: 22px;
     font-weight: 500;
     font-family: 'Italiana', sans-serif;
+    min-height: 104px;
   }
 
-  .locations-photo-container:hover .locations-photo-text-desc {
+  .pill-button {
+    opacity: 0;
+  }
+
+  .locations-photo-container:hover .locations-photo-text-desc,
+  .locations-photo-container:hover .pill-button {
     opacity: 1;
   }
 
