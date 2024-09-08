@@ -133,8 +133,8 @@ export default function Home() {
                 const quote = document.querySelector('.quote-container') as unknown as HTMLElement;
                 if (locationsContentDiv) {
                     if (scrollPosition >= 1700 && scrollPosition <= 2600) {
-                        console.log('setting backgroundColor to #0e0d0d');
-                        locationsContentDiv.style.backgroundColor = '#12211b'
+                        // good values for video background color, #32201C, #9A8F88
+                        locationsContentDiv.style.backgroundColor = '#9A8F88'
                         blur.style.background = 'linear-gradient(to bottom, rgba(18, 33, 27, 0) 0%, rgba(18, 33, 27, 1) 100%)'
                     } else if (scrollPosition >= 2600) {
                         locationsContentDiv.style.backgroundColor = 'black';
@@ -150,7 +150,6 @@ export default function Home() {
 
                 if (quote) {
                     if (scrollPosition >= 1100) {
-                        console.log('setting backgroundColor to #0e0d0d');
                         quote.style.opacity = '1'
                     }
                 }
