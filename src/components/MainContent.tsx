@@ -69,11 +69,14 @@ export default function MainContent() {
                 const colorToSwitchTo = imageIndex === 1 ? '#302e25' : imageIndex === 2 ? '#627372' : '#191616';
                 const mainContentDiv = document.querySelector('.main-content') as unknown as HTMLElement;
                 const locationsPhotosDiv  = document.querySelector('.locations-photos') as unknown as HTMLElement;
+                const footerContainerDiv = document.querySelector('.footer-container') as unknown as HTMLElement;
+
 
 
                 if (entry.isIntersecting) {
                     if (correspondingText && mainContentDiv) {
                         mainContentDiv.style.backgroundColor = colorToSwitchTo;
+                        footerContainerDiv.style.backgroundColor = colorToSwitchTo
                         locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', colorToSwitchTo);
                         correspondingText.classList.add('slide');
                         correspondingText.classList.add('show');
@@ -82,6 +85,10 @@ export default function MainContent() {
                     if (correspondingText && mainContentDiv) {
                         correspondingText.classList.remove('show');
                         correspondingText.classList.remove('slide');
+                    }
+                    if (imageIndex === 1) {
+                        locationsPhotosDiv.style.setProperty('--locations-photos-pseudo', 'black');
+                        mainContentDiv.style.backgroundColor = 'black';
                     }
 
                 }

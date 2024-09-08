@@ -3,6 +3,7 @@
     height: min-content;
     display: flex;
     flex-direction: column;
+    transition:  background-color 1s ease;
 }
 
 .footer-svg {
