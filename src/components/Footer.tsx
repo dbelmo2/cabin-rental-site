@@ -36,42 +36,42 @@ export default function Footer() {
                             </div>
                             <ul className='footer-social-media-list'>
                                 <li className='footer-social-media-link'>
-                                    <IconButton style={{ backgroundColor: 'white'}}>
-                                        <FaXTwitter color='black'/>
+                                    <IconButton className='social-icon' style={{ backgroundColor: 'white'}}>
+                                        <FaXTwitter className='social-icon' color='black'/>
                                     </IconButton>
-                                    <div style={{ paddingLeft: 15}}>
+                                    <div className='footer-social-media-label' >
                                         Follow us on X
                                     </div>
                                 </li>
                                 <li className='footer-social-media-link'>
-                                    <IconButton  style={{ backgroundColor: '#323232'}}>
-                                        <FaTiktok color='#fff'/>
+                                    <IconButton className='social-icon'  style={{ backgroundColor: '#323232'}}>
+                                        <FaTiktok className='social-icon' color='#fff'/>
                                     </IconButton>
-                                    <div style={{ paddingLeft: 15}}>
+                                    <div className='footer-social-media-label' >
                                         Follow us on TikTok
                                     </div>
                                 </li>
                                 <li className='footer-social-media-link'>
                                     <IconButton style={{ backgroundColor: '#1877F2'}}>
-                                        <FaFacebookF color='#fff'/>
+                                        <FaFacebookF className='social-icon' color='#fff'/>
                                     </IconButton>
-                                    <div style={{ paddingLeft: 15}}>
+                                    <div className='footer-social-media-label' >
                                         Like us on Facebook
                                     </div>
                                 </li>
                                 <li className='footer-social-media-link'>
                                     <IconButton style={{ backgroundColor: '#E1306C'}}>
-                                        <FaInstagram color='#fff'/>
+                                        <FaInstagram className='social-icon' color='#fff'/>
                                     </IconButton>
-                                    <div style={{ paddingLeft: 15}}>
+                                    <div className='footer-social-media-label' >
                                         Follow us on Instagram
                                     </div>
                                 </li>
                                 <li className='footer-social-media-link'>
                                     <IconButton style={{ backgroundColor: '#e60023'}}>
-                                        <FaPinterest color='#fff'/>
+                                        <FaPinterest className='social-icon' color='#fff'/>
                                     </IconButton>
-                                    <div style={{ paddingLeft: 15}}>
+                                    <div className='footer-social-media-label' >
                                         Follow us on Pinterest
                                     </div>
                                 </li>
@@ -81,10 +81,10 @@ export default function Footer() {
                             <div className='footer-contact-info-title'>
                                 Contact Us
                             </div>
-                            <ul className='footer-social-media-list'>
+                            <ul className='footer-contact-info-list'>
                                 <li className='footer-contact-info-item'>
                                     <IconButton disabled>
-                                        <FaHouse color='#fff'/>
+                                        <FaHouse className='social-icon' color='#fff'/>
                                     </IconButton>
                                     <div style={{ paddingLeft: 15}}>
                                         Aspen Ridge Cabin Rentals
@@ -95,15 +95,15 @@ export default function Footer() {
                                 </li>
                                 <li className='footer-contact-info-item'>
                                     <IconButton disabled>
-                                        <FaPhone color='#fff'/>
+                                        <FaPhone className='social-icon' color='#fff'/>
                                     </IconButton>
                                     <div style={{ paddingLeft: 15}}>
                                         {"(303) 555-7890"}
                                     </div>
                                 </li>
-                                <li className='footer-contact-info-item'>
+                                <li className='footer-contact-info-item' style={{ wordBreak: 'break-all'}}>
                                     <IconButton disabled>
-                                        <FaEnvelope color='#fff'/>
+                                        <FaEnvelope className='social-icon' color='#fff'/>
                                     </IconButton>
                                     <div style={{ paddingLeft: 15}}>
                                         contact@experiencecolorado.com

@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     transition:  background-color 1s ease;
+    margin-bottom: 100px;
 }
 
 .footer-svg {
@@ -17,6 +18,7 @@
     z-index: 100;
     height: 400px;
     display: flex;
+    padding: 0px 0px;
 }
 
 .footer-about-us {
@@ -67,6 +69,11 @@
 
 .footer-social-media-list {
     padding: 0px 0px;
+    width: 100%;
+}
+
+.footer-contact-info-list {
+    padding: 0px 0px;
     width: 50%;
 }
 
@@ -100,4 +107,121 @@
     font-family: 'Quattrocento Sans', sans-serif;
     align-items: center;
     padding: 10px 0px;
+    width: fit-content;
+    
+
+}
+
+
+@media screen and (max-width: 950px) {
+
+    .footer-about-us-title {
+        padding: 15px 0px;
+        font-size: 30px;
+        font-family: "Italiana", sans-serif;
+        width: 90%;
+        
+    }
+    
+    .footer-about-us-text {
+        font-size: 16px;
+        font-family: 'Quattrocento Sans', sans-serif;
+        padding: 15px 0px;
+        width: 90%;
+    
+    }
+    .footer-contact-info-list {
+        width: 100%;
+        
+    }
+    
+}
+
+@media screen and (max-width: 700px) {
+    .footer-content {
+        background-color: black;
+        color: white;
+        width: 100vw;
+        z-index: 100;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-about-us {
+        width: 90vw;
+    }
+    .footer-contact-info-list {
+        width: 90vw;
+    }
+    .footer-contact-info {
+        width: 90vw;
+        padding: 0px;
+    }
+    .footer-contact-us {
+        width: 90vw;
+        flex-direction: column-reverse;
+        padding: 0px 0px 100px 0px;
+    }
+    .footer-social-media {
+        width: 90vw;
+        padding: 0px;
+    }
+
+    .footer-about-us-title {
+        text-align: center;
+        font-size: 24px;
+    }
+    
+    .footer-about-us-text {
+        text-align: center;
+        font-size: 14px;
+
+    
+    }
+    .footer-social-media-title {
+        width: fit-content;
+        font-size: 24px;
+        font-family: "Italiana", sans-serif;
+        align-self: center;
+        display: none;
+        margin-top: 50px;
+    }
+    .footer-contact-info-title {
+        font-family: "Italiana", sans-serif;
+        font-size: 24px;
+        width: fit-content;
+        align-self: center;
+        
+    }
+    .footer-social-media-label {
+        display: none;
+    }
+    .footer-social-media-list {
+        padding: 0px 0px;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        margin-bottom: 0px;
+    }
+    .footer-social-media-link {
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        margin: 0px;
+    }
+    .footer-contact-info-item {
+
+        font-size: 12px;
+        padding: 0px 0px;
+        
+        
+    }
+
+    .social-icon {
+        font-size: 12px;
+    }
+    
 }

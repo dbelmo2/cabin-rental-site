@@ -1,0 +1,21 @@
+.pill-button { 
+    background-color: none;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #fff;
+    width: fit-content;
+    padding: 19px 25px;
+    transition: all 1s ease;
+    font-family: "Quattrocento Sans", sans-serif;
+    border-radius: 100px;
+    text-wrap: none;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any overflowed text */
+    text-overflow: ellipsis; /* Adds "..." if the text overflows */
+}
+
+.pill-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+

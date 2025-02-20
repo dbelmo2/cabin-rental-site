@@ -229,6 +229,7 @@
 
 
   .quote-container {
+    padding: 0px 10px;
     font-size: 50px;
     max-width: 750px;
     align-self: center;
@@ -240,12 +241,9 @@
     opacity: 0;
   }
 
-
-
-
-
-  
-
+  .quote-att {
+    font-size: 35px;
+  }
 
 
   @media screen and (max-width: 1500px) {
@@ -258,6 +256,8 @@
       margin-left: 50%;
       transform: translateX(-50%);
     }
+    
+
   }
 
   
@@ -272,13 +272,35 @@
     .two {
       font-size: 20vw;
     }
+
+    .quote-container {
+      font-size: 26px;
+    }
+  
+    .quote-att {
+      font-size: 18px;
+    }
+
+    .location-video-container {
+      text-align: center;
+      position: relative;
+      height: 737px; /* old value 737px */
+      width: 90vw; /* old value 90vw */
+      align-self: center;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      transform: perspective(1500px) rotateY(7deg) rotateX(7deg);
+      transition: transform 0.75s ease-out;
+      margin-top: 350px;
+    }
+
   }
 
 
   @media screen and (max-width: 650px) {
 
     .location-video-container {
-      height: 60vh;
+      height: 70vh;
     }
 
     .video-text {

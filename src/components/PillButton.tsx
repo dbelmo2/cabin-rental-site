@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-
+import './css/PillButton.css';
 
 type Props = {
     children: React.ReactNode,
@@ -12,10 +12,12 @@ type Props = {
 
 
 
+
+
 export default function PillButton({children, className, id, disabled}: Props) {
     return (
         <Button 
-            className={className}
+            className={`pill-button ${className}`}
             disabled={disabled}
             id={id}
             sx={{ 

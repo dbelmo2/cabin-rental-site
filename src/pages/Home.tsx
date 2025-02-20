@@ -11,6 +11,9 @@ import Footer from '../components/Footer';
 
 const coloradoIndexes = [8, 7, 6, 5, 4, 3, 2, 1 ];
 const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
+
+
+
 export default function Home() {
     document.querySelector("#hero-text > path:nth-child(19)")
 
@@ -52,14 +55,17 @@ export default function Home() {
     const addScrollListener = () => {
         const container = document.querySelector('.content');
         const videoContainer = document.querySelector('.location-video-container') as HTMLElement;
+
         // UOS
+        // TODO: Fix bug where the startStraighten position no longer works as the window with shrinks.
+        // A possible fix and improvement might be to use IntersectionObserver API to detect when an element enters a specific threshold in the viewport. 
         const maxYTilt = 15;
         const maxXTilt = 10;
         const normalPerspective = 3000;
         const tiltedPerspective = 1000;
         const startStraighten = 724 + 600; // 600 here is calculated by taking the old scrollPosition where the video was straight (1500px) and subtracting the 
-        const endStraighten = 1524 + 600;  // vertical offset of the new desired scrollPosition where the video is straight. 
-        const startTilt = 1600 + 600;
+        const endStraighten = 1524 + 600;  // vertical offset of the new desired scrollPosition where the video is straight. If the position needs to change,
+        const startTilt = 1600 + 600; // update in a similar manner.
         const endTilt = 2240 + 600;
 
         const yStraightenMultiplier = maxYTilt / (endStraighten - startStraighten);
@@ -71,6 +77,9 @@ export default function Home() {
         const perspectiveTiltMultiplier = (normalPerspective - tiltedPerspective) / (endTilt - startTilt);
 
 
+
+
+
         // Old scroll position where straight: 1500px
 
         let lastPosition = 0;
@@ -80,8 +89,8 @@ export default function Home() {
                 
 
                 const scrollPosition = container.scrollTop;
-                console.log('scroll position: ', scrollPosition);
-                //console.log('Current scroll position: ', scrollPosition);
+                //console.log('scroll position: ', scrollPosition);
+                //console.log('Current scroll position: ', );
                 if (lastPosition < scrollPosition) {
                     // scrolling down
                     if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
@@ -149,7 +158,7 @@ export default function Home() {
                 }
 
                 if (quote) {
-                    if (scrollPosition >= 1100) {
+                    if (scrollPosition >= 600) {
                         quote.style.opacity = '1'
                     }
                 }
@@ -190,7 +199,7 @@ export default function Home() {
                 </div>
 
                 <div className='quote-container'>
-                    "The earth has music for those who listen." - <span style={{ fontSize: 35}}>William Shakespeare</span>
+                    "The earth has music for those who listen." - <span className='quote-att'>Shakespeare</span>
                 </div>
                 <div className='location-video-container'>
                     <video className='location-video' autoPlay={true} loop muted={true} playsInline>
@@ -198,7 +207,7 @@ export default function Home() {
                     </video>
                     <div className='video-text'>
                       <div className='video-text-inner'>
-                        Witness the Centennial State
+                        Embrace the ultimate retreat
 
                       </div>
                     </div>
