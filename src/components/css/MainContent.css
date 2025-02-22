@@ -74,9 +74,8 @@
 
 
 .full-vh-container {
-    height: 100vh;
-
-    
+    height: 100%;
+    min-height: 100vh;
 }
 
 .responsive-img-container {
@@ -357,13 +356,13 @@
         width: 120%;  /* Scale the width of the image to the width of the container (or window) */
         height: auto; /* Automatically adjust the height to maintain the aspect ratio */
         display: block; /* Ensures there's no extra space below the image */
+
     }
 
     .responsive-img-container {
         align-self: center;
         width: 95vw; /* Make the container slightly smaller than the image */
-        height: 50%; /* Shrink height in proportion to the image */
-        max-height: 1000px; /* Set maximum bounds for the container */
+        height: ; /* Shrink height in proportion to the image */
         overflow: hidden;
         display: flex;
         justify-content: center;

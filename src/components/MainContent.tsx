@@ -21,7 +21,6 @@ export default function MainContent() {
         const visibleResponsiveImages = document.querySelectorAll('.scale-effect') as unknown as HTMLElement[];
         const scrollPosition = container.scrollTop;
 
-        console.log('scroll positon:', scrollPosition);
 
         const minScale = 1.00;
         const maxScale = 1.15;

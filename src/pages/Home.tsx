@@ -3,7 +3,7 @@ import mainCabin from '../assets/main-cabin-opt.jpg';
 
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video-opt.mp4';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import MainContent from '../components/MainContent';
 import '../components/css/Footer.css';
 import ExpandingPhotos from '../components/ExpandingPhotos';
@@ -15,7 +15,12 @@ const cabinResortsIndexes = [30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19];
 
 
 export default function Home() {
-    document.querySelector("#hero-text > path:nth-child(19)")
+    document.querySelector("#hero-text > path:nth-child(19)");
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const videoContainerRef = useRef<HTMLDivElement | null>(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+
+
 
 
     const setHeroTextLengths = () => {
@@ -52,9 +57,12 @@ export default function Home() {
     // y 5 -> 0
 
 
-    const addScrollListener = () => {
-        const container = document.querySelector('.content');
-        const videoContainer = document.querySelector('.location-video-container') as HTMLElement;
+    const handleVideoScroll = () => {
+        const container = containerRef.current;
+        const videoContainer = videoContainerRef.current;
+
+        if (!container || !videoContainer ) return;
+
 
         // UOS
         // TODO: Fix bug where the startStraighten position no longer works as the window with shrinks.
@@ -79,105 +87,131 @@ export default function Home() {
 
 
 
-
-        // Old scroll position where straight: 1500px
-
         let lastPosition = 0;
-        //console.log('Window height is ', windowHeight);
-        if (container) {
-            container.addEventListener('scroll', () => {
                 
 
-                const scrollPosition = container.scrollTop;
-                //console.log('scroll position: ', scrollPosition);
-                //console.log('Current scroll position: ', );
-                if (lastPosition < scrollPosition) {
-                    // scrolling down
-                    if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
-                        const contextPosition = scrollPosition - startStraighten;
-                        const perspectiveValue = String((contextPosition * perspectiveStraightenMultiplier) + tiltedPerspective);
-                        const yValue = String(maxYTilt - (contextPosition * yStraightenMultiplier));
-                        const xValue = String(maxXTilt - (contextPosition * xStraightenMultiplier));
-                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
-                        videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
-                    } else if (scrollPosition >= endStraighten && scrollPosition <= startTilt && videoContainer) {
-                        videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
-                    } else if (scrollPosition >= startTilt && scrollPosition <= endTilt && videoContainer) {
-                        const contextPosition = scrollPosition - startTilt;
-                        const perspectiveValue = String((contextPosition * perspectiveTiltMultiplier) + tiltedPerspective);
-                        const yValue = String(contextPosition * yTiltValueMultiplier);
-                        const xValue = String(contextPosition * xTiltValueMultiplier);
-                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
-                        videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
-                    } else if (scrollPosition >= endTilt && videoContainer) {
-                        videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(-${maxYTilt}deg) rotateX(-${maxXTilt}deg)`
-                    }
-                } else {
-                    //console.log('scrolling up')
-                    // scrolling up
-                    if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
-                        const contextPosition = scrollPosition - startStraighten;
-                        const perspectiveValue = String((contextPosition * perspectiveStraightenMultiplier) + tiltedPerspective);
-
-                        const yValue = String(maxYTilt - (contextPosition * yStraightenMultiplier));
-                        const xValue = String(maxXTilt - (contextPosition * xStraightenMultiplier));
-                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
-                        videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
-                    } else if (scrollPosition <= startStraighten && scrollPosition <= endStraighten && videoContainer) {
-                        videoContainer.style.transform = `perspective(${tiltedPerspective}px) rotateY(${maxYTilt}deg) rotateX(${maxXTilt}deg)`
-                    } else if (scrollPosition <= endTilt && scrollPosition >= startTilt && videoContainer) {
-                        const contextPosition = scrollPosition - startTilt;
-                        const perspectiveValue = String((contextPosition * perspectiveTiltMultiplier) + tiltedPerspective);
-                        const yValue = String(contextPosition * xTiltValueMultiplier);
-                        const xValue = String(contextPosition * yTiltValueMultiplier);
-                        //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
-                        videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
-                    } else if (scrollPosition >= startTilt && scrollPosition <= endStraighten && videoContainer) {
-                        videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
-                    }
-                }
-                
-                const locationsContentDiv = document.querySelector('.locations-content') as unknown as HTMLElement;
-                const blur = document.querySelector('.black-blur') as unknown as HTMLElement;
-                const quote = document.querySelector('.quote-container') as unknown as HTMLElement;
-                if (locationsContentDiv) {
-                    if (scrollPosition >= 1700 && scrollPosition <= 2600) {
-                        // good values for video background color, #32201C, #9A8F88
-                        locationsContentDiv.style.backgroundColor = '#9A8F88'
-                        blur.style.background = 'linear-gradient(to bottom, rgba(18, 33, 27, 0) 0%, rgba(18, 33, 27, 1) 100%)'
-                    } else if (scrollPosition >= 2600) {
-                        locationsContentDiv.style.backgroundColor = 'black';
-                        blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
-
-                    } else {
-                        locationsContentDiv.style.backgroundColor = 'black'
-                        blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)';
+        const scrollPosition = container.scrollTop;
 
 
-                    }
-                }
+        console.log('scroll position: ', scrollPosition);
+        //console.log('Current scroll position: ', );
+        if (lastPosition < scrollPosition) {
+            // scrolling down
+            if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
+                const contextPosition = scrollPosition - startStraighten;
+                const perspectiveValue = String((contextPosition * perspectiveStraightenMultiplier) + tiltedPerspective);
+                const yValue = String(maxYTilt - (contextPosition * yStraightenMultiplier));
+                const xValue = String(maxXTilt - (contextPosition * xStraightenMultiplier));
+                //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
+            } else if (scrollPosition >= endStraighten && scrollPosition <= startTilt && videoContainer) {
+                videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
+            } else if (scrollPosition >= startTilt && scrollPosition <= endTilt && videoContainer) {
+                const contextPosition = scrollPosition - startTilt;
+                const perspectiveValue = String((contextPosition * perspectiveTiltMultiplier) + tiltedPerspective);
+                const yValue = String(contextPosition * yTiltValueMultiplier);
+                const xValue = String(contextPosition * xTiltValueMultiplier);
+                //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
+            } else if (scrollPosition >= endTilt && videoContainer) {
+                videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(-${maxYTilt}deg) rotateX(-${maxXTilt}deg)`
+            }
+        } else {
+            //console.log('scrolling up')
+            // scrolling up
+            if (scrollPosition >= startStraighten && scrollPosition <= endStraighten && videoContainer) {
+                const contextPosition = scrollPosition - startStraighten;
+                const perspectiveValue = String((contextPosition * perspectiveStraightenMultiplier) + tiltedPerspective);
 
-                if (quote) {
-                    if (scrollPosition >= 600) {
-                        quote.style.opacity = '1'
-                    }
-                }
-
-
-
-
-                lastPosition = scrollPosition;
-            })
-
-            // 824 to 1624 should straighten out the video
-            // 1624 to 2424 should re tilt it
+                const yValue = String(maxYTilt - (contextPosition * yStraightenMultiplier));
+                const xValue = String(maxXTilt - (contextPosition * xStraightenMultiplier));
+                //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
+            } else if (scrollPosition <= startStraighten && scrollPosition <= endStraighten && videoContainer) {
+                videoContainer.style.transform = `perspective(${tiltedPerspective}px) rotateY(${maxYTilt}deg) rotateX(${maxXTilt}deg)`
+            } else if (scrollPosition <= endTilt && scrollPosition >= startTilt && videoContainer) {
+                const contextPosition = scrollPosition - startTilt;
+                const perspectiveValue = String((contextPosition * perspectiveTiltMultiplier) + tiltedPerspective);
+                const yValue = String(contextPosition * xTiltValueMultiplier);
+                const xValue = String(contextPosition * yTiltValueMultiplier);
+                //console.log(`perspective: ${perspectiveValue}px, rotateY: ${yValue}deg, rotateX: ${xValue}deg`);
+                videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
+            } else if (scrollPosition >= startTilt && scrollPosition <= endStraighten && videoContainer) {
+                videoContainer.style.transform = `perspective(${normalPerspective}px) rotateY(0deg) rotateX(0deg)`
+            }
         }
+        
+        const locationsContentDiv = document.querySelector('.locations-content') as unknown as HTMLElement;
+        const blur = document.querySelector('.black-blur') as unknown as HTMLElement;
+        const quote = document.querySelector('.quote-container') as unknown as HTMLElement;
+        if (locationsContentDiv) {
+            if (scrollPosition >= 1700 && scrollPosition <= 2600) {
+                // good values for video background color, #32201C, #9A8F88
+                locationsContentDiv.style.backgroundColor = '#9A8F88'
+                blur.style.background = 'linear-gradient(to bottom, rgba(18, 33, 27, 0) 0%, rgba(18, 33, 27, 1) 100%)'
+            } else if (scrollPosition >= 2600) {
+                locationsContentDiv.style.backgroundColor = 'black';
+                blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
+
+            } else {
+                locationsContentDiv.style.backgroundColor = 'black'
+                blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)';
+
+
+            }
+        }
+
+        if (quote) {
+            if (scrollPosition >= 600) {
+                quote.style.opacity = '1'
+            }
+        }
+
+
+
+
+        lastPosition = scrollPosition;
+        
     }
+
 
     useEffect(() => {
       //console.log('hello world')
       setHeroTextLengths();
-      addScrollListener();
+      const container = containerRef.current;
+      const video = videoRef.current;
+      const videoObserver = new IntersectionObserver((entries) => {
+        
+        entries.forEach((entry) => {
+            if (container) {
+                if (entry.isIntersecting) {
+                    console.log('video is entering, adding listener')
+
+                    container.addEventListener('scroll', handleVideoScroll);
+                 } else {
+                    console.log('video is exiting, removing listener')
+                     container.removeEventListener('scroll', handleVideoScroll);
+
+                 }
+            }
+
+        });
+    })
+
+      if (video) {
+        videoObserver.observe(video as Element);
+      }
+
+      return () => {
+        
+        if (video) {
+            videoObserver.unobserve(video as Element);
+        }
+        if (container) {
+            container.removeEventListener('scroll', handleVideoScroll);
+
+        }
+      }
 
     }, [])
 
@@ -186,7 +220,7 @@ export default function Home() {
 
     return (
         <>
-        <div className='content'>
+        <div ref={containerRef} className='content'>
             <div className='black-shadow'>
               <img src={mainCabin} className='main-cabin'/>
               <HeroText  className='title-container'/>
@@ -201,8 +235,8 @@ export default function Home() {
                 <div className='quote-container'>
                     "The earth has music for those who listen." - <span className='quote-att'>Shakespeare</span>
                 </div>
-                <div className='location-video-container'>
-                    <video className='location-video' autoPlay={true} loop muted={true} playsInline>
+                <div ref={videoContainerRef} className='location-video-container'>
+                    <video ref={videoRef} className='location-video' autoPlay={true} loop muted={true} playsInline>
                         <source src={LocationVideo} type='video/mp4' />
                     </video>
                     <div className='video-text'>
