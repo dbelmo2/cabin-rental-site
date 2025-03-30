@@ -256,7 +256,7 @@ export default function Home() {
     }
 
     const setUpQuote = () => {
-        const container = containerRef.current;
+        //const container = containerRef.current;
         const quote = quoteRef.current;
         const viewportHeight = window.innerHeight;
         const targetPosition = viewportHeight * 0.2;
