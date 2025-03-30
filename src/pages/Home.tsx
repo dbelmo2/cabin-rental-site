@@ -3,7 +3,7 @@ import mainCabin from '../assets/main-cabin-opt.jpg';
 
 import HeroText from "../assets/hero-filled.svg?react";
 import LocationVideo from '../assets/colorado-video-opt.mp4';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import MainContent from '../components/MainContent';
 import '../components/css/Footer.css';
 import ExpandingPhotos from '../components/ExpandingPhotos';
@@ -117,7 +117,6 @@ export default function Home() {
                 videoContainer.style.transform = `perspective(${perspectiveValue}px) rotateY(${yValue}deg) rotateX(${xValue}deg)`
             } else if (centerOfVideo < centerOfScreen) {
                 if (tiltStart === 0) {
-                    setTiltContext(scrollPosition);
                     tiltStart = scrollPosition;
                 }
 
@@ -214,7 +213,6 @@ export default function Home() {
                         
                       } else {
                         console.log('Entering from bottom');
-                        setStraightContext(container.scrollTop);
                         straightStart = container.scrollTop;
                       }
                       
