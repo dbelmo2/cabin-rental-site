@@ -191,14 +191,23 @@
   .location-video-container {
     text-align: center;
     position: relative;
-    height: 737px; /* old value 737px */
+    height: fit-content; /* old value 737px */
     width: 70vw; /* old value 90vw */
     align-self: center;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     transform: perspective(1500px) rotateY(7deg) rotateX(7deg);
     transition: transform 0.75s ease-out;
-    margin-top: 350px;
+    margin-top: 0px; /* old value 350px */
+    
+  }
+
+  .location-video-frame {
+    transform: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
   }
 
   .location-video {
@@ -292,8 +301,8 @@
       -webkit-transform-style: preserve-3d;
       transform: perspective(1500px) rotateY(7deg) rotateX(7deg);
       transition: transform 0.75s ease-out;
-      margin-top: 350px;
     }
+
 
   }
 
