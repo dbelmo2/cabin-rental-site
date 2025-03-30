@@ -181,11 +181,11 @@ export default function Home() {
             const quote = document.querySelector('.quote-container') as unknown as HTMLElement;
             if (locationsContentDiv) {
                 // TODO: Update this to use dynamic values...
-                if (scrollPosition >= 1400 && scrollPosition <= 2200) {
+                if (scrollPosition >= 1400 && scrollPosition <= 2050) {
                     // good values for video background color, #32201C, #9A8F88
                     locationsContentDiv.style.backgroundColor = '#9A8F88'
                     blur.style.background = 'linear-gradient(to bottom, rgba(18, 33, 27, 0) 0%, rgba(18, 33, 27, 1) 100%)'
-                } else if (scrollPosition >= 2200) {
+                } else if (scrollPosition >= 2050) {
                     locationsContentDiv.style.backgroundColor = 'black';
                     blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
     
