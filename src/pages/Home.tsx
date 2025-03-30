@@ -19,6 +19,7 @@ export default function Home() {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const videoContainerRef = useRef<HTMLDivElement | null>(null);
     const videoFrameRef = useRef<HTMLDivElement | null>(null);
+    const quoteRef = useRef<HTMLDivElement | null>(null);
 
 
 
@@ -120,6 +121,13 @@ export default function Home() {
                     tiltStart = scrollPosition;
                 }
 
+                // TODO: 
+                //      Fix bug where tiltStart retains old value when the window width changes and the y position of the video is changed as a result. This should
+                // cause tiltStart to update but it's not as it only updates when element first enters from the bottom. And on top of that, it only updates once,
+                // as there is a check to make sure the previous value is zero. 
+                // Possible fix. When the element enters the screen, whether from bottom or top, calculate the tiltStart/straightStart by taking into account the height of the element. 
+                console.log('tiltStart is:', tiltStart);
+
                 // this is buggy and happens when on a mobile screen and the center is slightly above the center of the screen, due to the tilt.
                 console.log('Moving down, tilting video')
                 const contextPosition = scrollPosition - tiltStart;
@@ -162,15 +170,22 @@ export default function Home() {
             }
             */
             
+
+
+            // TODO: Code below needs to be moved outside of this function so that it can be executed even if the video has not intersected the screen yet.
+            // Need to implement a permanent listener on the container to manage things such as bg color changes as the user transitions between different sections.
+            // 
+
             const locationsContentDiv = document.querySelector('.locations-content') as unknown as HTMLElement;
             const blur = document.querySelector('.black-blur') as unknown as HTMLElement;
             const quote = document.querySelector('.quote-container') as unknown as HTMLElement;
             if (locationsContentDiv) {
-                if (scrollPosition >= 1700 && scrollPosition <= 2600) {
+                // TODO: Update this to use dynamic values...
+                if (scrollPosition >= 1400 && scrollPosition <= 2200) {
                     // good values for video background color, #32201C, #9A8F88
                     locationsContentDiv.style.backgroundColor = '#9A8F88'
                     blur.style.background = 'linear-gradient(to bottom, rgba(18, 33, 27, 0) 0%, rgba(18, 33, 27, 1) 100%)'
-                } else if (scrollPosition >= 2600) {
+                } else if (scrollPosition >= 2200) {
                     locationsContentDiv.style.backgroundColor = 'black';
                     blur.style.background = 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%)'
     
@@ -181,12 +196,12 @@ export default function Home() {
     
                 }
             }
-    
-            if (quote) {
-                if (scrollPosition >= 600) {
-                    quote.style.opacity = '1'
-                }
+            
+            console.log('scrollPosition', scrollPosition);
+            if (scrollPosition >= 600) {
+                quote.style.opacity = '1'
             }
+            
             lastPosition = scrollPosition;
         }
 
@@ -224,32 +239,64 @@ export default function Home() {
                    }
               }
           });
-      })
+        })
 
-      if (video) {
-        videoObserver.observe(video as Element);
-      }
-
-      return () => {
         if (video) {
-            videoObserver.unobserve(video as Element);
+            videoObserver.observe(video as Element);
         }
-        if (container) {
-            container.removeEventListener('scroll', handleVideoScroll);
 
+        return () => {
+            if (video) {
+                videoObserver.unobserve(video as Element);
+            }
+            if (container) {
+                container.removeEventListener('scroll', handleVideoScroll);
+            }
         }
-      }
+    }
+
+    const setUpQuote = () => {
+        const container = containerRef.current;
+        const quote = quoteRef.current;
+        const viewportHeight = window.innerHeight;
+        const targetPosition = viewportHeight * 0.2;
+
+        const options = {
+            root: null, // Use the viewport as the root
+            // Set the rootMargin to position our "trigger line" at 20% of viewport height
+            rootMargin: `-${targetPosition}px 0px ${viewportHeight - targetPosition}px 0px`,
+            threshold: [0, 0.1] // We'll detect when it starts to enter and is 10% visible
+          };
+
+        const quoteObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // doo something
+                }
+            })
+        }, options);
+
+        if (quote) {
+            quoteObserver.observe(quote as Element);
+        }
+        
+        return () => {
+            if (quote) {
+                quoteObserver.unobserve(quote as Element);
+            }
+        }
     }
 
 
     useEffect(() => {
       //console.log('hello world')
       setHeroTextLengths();
-      const cleanUpVideoSetup = setUpVideo();
+      const cleanUpQuoteSetUp = setUpQuote();
+      const cleanUpVideoSetUp = setUpVideo();
 
       return () => {
-        cleanUpVideoSetup();
-
+        cleanUpVideoSetUp();
+        cleanUpQuoteSetUp();
       }
 
     }, [])
@@ -271,7 +318,7 @@ export default function Home() {
                 <div className='black-blur'>
                 </div>
 
-                <div className='quote-container'>
+                <div ref={quoteRef} className='quote-container'>
                     "The earth has music for those who listen." - <span className='quote-att'>Shakespeare</span>
                 </div>
                 <div ref={videoFrameRef} className='location-video-frame'>

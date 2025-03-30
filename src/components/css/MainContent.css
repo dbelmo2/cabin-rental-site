@@ -362,11 +362,12 @@
     .responsive-img-container {
         align-self: center;
         width: 95vw; /* Make the container slightly smaller than the image */
-        height: ; /* Shrink height in proportion to the image */
+        height: 55%; /* Shrink height in proportion to the image */
         overflow: hidden;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: end;
+        padding-bottom: 50px;
         
     }
     

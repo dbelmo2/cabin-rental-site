@@ -246,7 +246,7 @@
     text-align: center;
     font-family: 'Italiana', sans-serif;
     color: white;
-    margin-bottom: 175px;
+    margin-bottom: 35vh;
     transition: opacity 3s ease;
     opacity: 0;
   }
