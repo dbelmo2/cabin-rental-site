@@ -20,8 +20,6 @@ export default function Home() {
     const videoContainerRef = useRef<HTMLDivElement | null>(null);
     const videoFrameRef = useRef<HTMLDivElement | null>(null);
 
-    const [ straightContext, setStraightContext ] = useState(0);
-    const [ tiltContext, setTiltContext ] = useState(0);
 
 
 
@@ -92,7 +90,6 @@ export default function Home() {
             const xTiltValueMultiplier = (maxXTilt / (endTilt - startTilt)) * -1;
             const perspectiveTiltMultiplier = (normalPerspective - tiltedPerspective) / (endTilt - startTilt);
     
-            const videoScrollTop = video.scrollTop;
             const scrollPosition = container.scrollTop;
     
             const rect = video.getBoundingClientRect();
